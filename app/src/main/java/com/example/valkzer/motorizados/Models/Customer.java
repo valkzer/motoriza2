@@ -2,7 +2,7 @@ package com.example.valkzer.motorizados.Models;
 
 import java.util.ArrayList;
 
-class Customer extends Model {
+public class Customer extends Model {
     private String  name                  = "";
     private String  address               = "";
     private String  phone                 = "";
