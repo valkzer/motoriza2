@@ -1,8 +1,9 @@
-package com.example.valkzer.motorizados;
+package com.example.valkzer.motorizados.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.valkzer.motorizados.R;
 import com.example.valkzer.motorizados.Models.Customer;
 import com.example.valkzer.motorizados.Models.Delivery;
 import com.example.valkzer.motorizados.Models.CreditCard;
