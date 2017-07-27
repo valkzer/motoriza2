@@ -9,6 +9,29 @@ public class CreditCard extends Model {
     private Integer cardExpirationYear  = 0;
     private String  cardType            = "";
     private String  id                  = null;
+    private String  deliveryId          = null;
+
+    public CreditCard(String id)
+    {
+        super(new CreditCardFireBaseRepository());
+        this.id = id;
+    }
+
+    public CreditCard(String cardNumber, Integer cardExpirationMonth, Integer cardExpirationYear, String cardType)
+    {
+        super(new CreditCardFireBaseRepository());
+        this.cardNumber = cardNumber;
+        this.cardExpirationMonth = cardExpirationMonth;
+        this.cardExpirationYear = cardExpirationYear;
+        this.cardType = cardType;
+    }
+
+    //region Setters and Getters
+
+    public String getId()
+    {
+        return id;
+    }
 
     public void setId(String id)
     {
@@ -24,23 +47,6 @@ public class CreditCard extends Model {
     {
         this.deliveryId = deliveryId;
         return this;
-    }
-
-    private String deliveryId = null;
-
-    public CreditCard(String id)
-    {
-        super(new CreditCardFireBaseRepository());
-        this.id = id;
-    }
-
-    public CreditCard(String cardNumber, Integer cardExpirationMonth, Integer cardExpirationYear, String cardType)
-    {
-        super(new CreditCardFireBaseRepository());
-        this.cardNumber = cardNumber;
-        this.cardExpirationMonth = cardExpirationMonth;
-        this.cardExpirationYear = cardExpirationYear;
-        this.cardType = cardType;
     }
 
     public String getCardNumber()
@@ -83,8 +89,5 @@ public class CreditCard extends Model {
         this.cardType = cardType;
     }
 
-    public String getId()
-    {
-        return id;
-    }
+    //endregion
 }

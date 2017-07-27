@@ -25,9 +25,16 @@ public class Delivery extends Model {
         this.completed = completed;
     }
 
+    //region Setters and Getters
+
     public String getId()
     {
         return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
     }
 
     public Customer getCustomer()
@@ -69,4 +76,6 @@ public class Delivery extends Model {
     {
         this.completed = completed;
     }
+
+    //endregion
 }

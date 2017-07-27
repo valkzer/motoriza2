@@ -13,19 +13,7 @@ public class Customer extends Model {
     private String workPlace             = "";
     private String identificationPicture = "";
     private String id                    = null;
-
-    public String getDeliveryId()
-    {
-        return deliveryId;
-    }
-
-    public Customer setDeliveryId(String deliveryId)
-    {
-        this.deliveryId = deliveryId;
-        return this;
-    }
-
-    private String deliveryId = null;
+    private String deliveryId            = null;
 
     public Customer(String id)
     {
@@ -43,6 +31,29 @@ public class Customer extends Model {
         this.salary = salary;
         this.workPlace = workPlace;
         this.identificationPicture = identificationPicture;
+    }
+
+    //region Setters and Getters
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    public String getDeliveryId()
+    {
+        return deliveryId;
+    }
+
+    public Customer setDeliveryId(String deliveryId)
+    {
+        this.deliveryId = deliveryId;
+        return this;
     }
 
     public String getName()
@@ -115,8 +126,5 @@ public class Customer extends Model {
         this.identificationPicture = identificationPicture;
     }
 
-    public String getId()
-    {
-        return id;
-    }
+    //endregion
 }
