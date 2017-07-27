@@ -4,11 +4,16 @@ import com.example.valkzer.motorizados.Repositories.FireBase.DeliveryFireBaseRep
 
 public class Delivery extends Model {
 
-    private String     id         = null;
-    private Customer   customer   = null;
-    private CreditCard creditCard = null;
-    private double     cost       = 0;
-    private boolean    completed  = false;
+    private Customer   customer    = null;
+    private CreditCard creditCard  = null;
+    private Double     cost        = null;
+    private String     description = null;
+    private Boolean    completed   = null;
+
+    public Delivery()
+    {
+        super(new DeliveryFireBaseRepository());
+    }
 
     public Delivery(String id)
     {
@@ -16,10 +21,11 @@ public class Delivery extends Model {
         this.id = id;
     }
 
-    public Delivery(Customer customer, CreditCard creditCard, double cost, boolean completed)
+    public Delivery(Customer customer, CreditCard creditCard, Double cost, Boolean completed, String description)
     {
         super(new DeliveryFireBaseRepository());
         this.customer = customer;
+        this.description = description;
         this.creditCard = creditCard;
         this.cost = cost;
         this.completed = completed;
@@ -27,14 +33,14 @@ public class Delivery extends Model {
 
     //region Setters and Getters
 
-    public String getId()
+    public String getDescription()
     {
-        return id;
+        return description;
     }
 
-    public void setId(String id)
+    public void setDescription(String description)
     {
-        this.id = id;
+        this.description = description;
     }
 
     public Customer getCustomer()
@@ -57,22 +63,22 @@ public class Delivery extends Model {
         this.creditCard = creditCard;
     }
 
-    public double getCost()
+    public Double getCost()
     {
         return cost;
     }
 
-    public void setCost(double cost)
+    public void setCost(Double cost)
     {
         this.cost = cost;
     }
 
-    public boolean isCompleted()
+    public Boolean isCompleted()
     {
         return completed;
     }
 
-    public void setCompleted(boolean completed)
+    public void setCompleted(Boolean completed)
     {
         this.completed = completed;
     }

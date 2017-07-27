@@ -12,8 +12,13 @@ public class Customer extends Model {
     private Double salary                = 0.0;
     private String workPlace             = "";
     private String identificationPicture = "";
-    private String id                    = null;
     private String deliveryId            = null;
+
+    public Customer()
+    {
+        super(new CustomerFireBaseRepository());
+
+    }
 
     public Customer(String id)
     {
@@ -34,16 +39,6 @@ public class Customer extends Model {
     }
 
     //region Setters and Getters
-
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(String id)
-    {
-        this.id = id;
-    }
 
     public String getDeliveryId()
     {

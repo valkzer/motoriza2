@@ -1,12 +1,13 @@
 package com.example.valkzer.motorizados.Models;
 
-import java.util.ArrayList;
+import java.util.Observer;
 
 import com.example.valkzer.motorizados.Repositories.Interfaces.RepositoryInterface;
 
 public abstract class Model {
 
-    private RepositoryInterface repository = null;
+    protected String              id         = null;
+    private   RepositoryInterface repository = null;
 
     public Model(RepositoryInterface repository)
     {
@@ -23,9 +24,9 @@ public abstract class Model {
         return this.repository.update(this);
     }
 
-    public Model find(String id)
+    public void find(String id, Observer observer)
     {
-        return this.repository.find(id);
+        this.repository.find(id,observer);
     }
 
     public boolean delete()
@@ -33,9 +34,18 @@ public abstract class Model {
         return this.repository.delete(this);
     }
 
-    public ArrayList getAll()
+    public void getAll(Observer observer)
     {
-        return this.repository.getAll();
+        this.repository.getAll(observer);
     }
 
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 }
