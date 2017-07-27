@@ -2,16 +2,40 @@ package com.example.valkzer.motorizados.Models;
 
 import java.util.ArrayList;
 
-abstract class Model {
+import com.example.valkzer.motorizados.Repositories.Interfaces.RepositoryInterface;
 
-    public abstract Model create();
+public abstract class Model {
 
-    public abstract Model update();
+    private RepositoryInterface repository = null;
 
-    public abstract Model find();
+    public Model(RepositoryInterface repository)
+    {
+        this.repository = repository;
+    }
 
-    public abstract boolean delete();
+    public Model create()
+    {
+        return repository.create(this);
+    }
 
-    public abstract ArrayList getAll();
+    public Model update()
+    {
+        return this.repository.update(this);
+    }
+
+    public Model find(String id)
+    {
+        return this.repository.find(id);
+    }
+
+    public boolean delete()
+    {
+        return this.repository.delete(this);
+    }
+
+    public ArrayList getAll()
+    {
+        return this.repository.getAll();
+    }
 
 }

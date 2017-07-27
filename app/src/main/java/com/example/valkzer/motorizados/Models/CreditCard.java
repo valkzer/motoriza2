@@ -1,20 +1,42 @@
 package com.example.valkzer.motorizados.Models;
 
-public class CreditCard {
+import com.example.valkzer.motorizados.Repositories.FireBase.CreditCardFireBaseRepository;
+
+public class CreditCard extends Model {
 
     private String  cardNumber          = "";
     private Integer cardExpirationMonth = 0;
     private Integer cardExpirationYear  = 0;
     private String  cardType            = "";
-    private Integer id                  = null;
+    private String  id                  = null;
 
-    public CreditCard(Integer id)
+    public void setId(String id)
     {
+        this.id = id;
+    }
+
+    public String getDeliveryId()
+    {
+        return deliveryId;
+    }
+
+    public CreditCard setDeliveryId(String deliveryId)
+    {
+        this.deliveryId = deliveryId;
+        return this;
+    }
+
+    private String deliveryId = null;
+
+    public CreditCard(String id)
+    {
+        super(new CreditCardFireBaseRepository());
         this.id = id;
     }
 
     public CreditCard(String cardNumber, Integer cardExpirationMonth, Integer cardExpirationYear, String cardType)
     {
+        super(new CreditCardFireBaseRepository());
         this.cardNumber = cardNumber;
         this.cardExpirationMonth = cardExpirationMonth;
         this.cardExpirationYear = cardExpirationYear;
@@ -61,7 +83,7 @@ public class CreditCard {
         this.cardType = cardType;
     }
 
-    public Integer getId()
+    public String getId()
     {
         return id;
     }

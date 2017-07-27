@@ -1,67 +1,31 @@
 package com.example.valkzer.motorizados.Models;
 
-import com.example.valkzer.motorizados.Repositories.DeliveryRepositoryInterface;
-import com.example.valkzer.motorizados.Repositories.DeliverySQLiteRepository;
-
-import java.util.ArrayList;
+import com.example.valkzer.motorizados.Repositories.FireBase.DeliveryFireBaseRepository;
 
 public class Delivery extends Model {
 
-    private Integer    id         = null;
+    private String     id         = null;
     private Customer   customer   = null;
     private CreditCard creditCard = null;
     private double     cost       = 0;
     private boolean    completed  = false;
 
-    private DeliveryRepositoryInterface deliveryRepository = null;
-
-
-    public Delivery(Integer id)
+    public Delivery(String id)
     {
+        super(new DeliveryFireBaseRepository());
         this.id = id;
-        this.deliveryRepository = new DeliverySQLiteRepository();
     }
 
-    public Delivery(Integer id, Customer customer, CreditCard creditCard, double cost, boolean completed)
+    public Delivery(Customer customer, CreditCard creditCard, double cost, boolean completed)
     {
-        this.id = id;
+        super(new DeliveryFireBaseRepository());
         this.customer = customer;
         this.creditCard = creditCard;
         this.cost = cost;
         this.completed = completed;
     }
 
-    @Override
-    public Model create()
-    {
-        return deliveryRepository.createDelivery(this);
-    }
-
-    @Override
-    public Model update()
-    {
-        return this.deliveryRepository.updateDelivery(this);
-    }
-
-    @Override
-    public Model find()
-    {
-        return this.deliveryRepository.getDelivery(this.id);
-    }
-
-    @Override
-    public boolean delete()
-    {
-        return this.deliveryRepository.deleteDelivery(this);
-    }
-
-    @Override
-    public ArrayList getAll()
-    {
-        return this.deliveryRepository.getAllDeliveries();
-    }
-
-    public Integer getId()
+    public String getId()
     {
         return id;
     }
