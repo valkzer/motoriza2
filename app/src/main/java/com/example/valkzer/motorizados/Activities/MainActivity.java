@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_principal);
         Customer   customer   = new Customer("Rolando Valcarcel", "Alajuela", "8887-9874", "rvalcarcelvivas@gmail.com", 3000.00, "PM/WM", "https://valkzer.com");
         CreditCard creditCard = new CreditCard("**** **** **** 2410", 24, 10, "VISA");
         Delivery   d          = new Delivery(customer, creditCard, 13, false);
