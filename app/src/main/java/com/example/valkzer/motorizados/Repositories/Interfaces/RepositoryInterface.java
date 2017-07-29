@@ -2,15 +2,15 @@ package com.example.valkzer.motorizados.Repositories.Interfaces;
 
 import com.example.valkzer.motorizados.Models.Model;
 
-import java.util.ArrayList;
+import java.util.Observer;
 
 public interface RepositoryInterface {
 
     Model create(Model model);
 
-    Model find(String id);
+    void find(String id, Observer observer);
 
-    ArrayList getAll();
+    void getAll(Observer observer);
 
     Model update(Model model);
 

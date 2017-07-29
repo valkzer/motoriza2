@@ -4,12 +4,17 @@ import com.example.valkzer.motorizados.Repositories.FireBase.CreditCardFireBaseR
 
 public class CreditCard extends Model {
 
-    private String  cardNumber          = "";
-    private Integer cardExpirationMonth = 0;
-    private Integer cardExpirationYear  = 0;
-    private String  cardType            = "";
-    private String  id                  = null;
+    private String  cardNumber          = null;
+    private Integer cardExpirationMonth = null;
+    private Integer cardExpirationYear  = null;
+    private String  cardType            = null;
     private String  deliveryId          = null;
+
+    public CreditCard()
+    {
+        super(new CreditCardFireBaseRepository());
+    }
+
 
     public CreditCard(String id)
     {
@@ -26,17 +31,13 @@ public class CreditCard extends Model {
         this.cardType = cardType;
     }
 
+    @Override
+    public String toString()
+    {
+        return this.getCardNumber();
+    }
+
     //region Setters and Getters
-
-    public String getId()
-    {
-        return id;
-    }
-
-    public void setId(String id)
-    {
-        this.id = id;
-    }
 
     public String getDeliveryId()
     {

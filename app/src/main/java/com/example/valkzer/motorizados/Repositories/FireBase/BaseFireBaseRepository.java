@@ -3,7 +3,9 @@ package com.example.valkzer.motorizados.Repositories.FireBase;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 
-abstract class BaseFireBaseRepository {
+import java.util.Observable;
+
+abstract class BaseFireBaseRepository extends Observable {
 
     DatabaseReference repositoryReference = null;
 
