@@ -1,5 +1,6 @@
 package com.example.valkzer.motorizados.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -69,8 +70,7 @@ public class Principal extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.nav_Login) {
         }
 
         return super.onOptionsItemSelected(item);
@@ -82,18 +82,17 @@ public class Principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_Form) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        }
+        else
+        if (id == R.id.nav_Delivery) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }
+        else
+        if (id == R.id.nav_Login) {
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
