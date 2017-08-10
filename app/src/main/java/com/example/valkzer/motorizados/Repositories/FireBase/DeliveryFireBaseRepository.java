@@ -33,9 +33,9 @@ public class DeliveryFireBaseRepository extends BaseFireBaseRepository implement
         Delivery   delivery   = (Delivery) model;
         CreditCard creditCard = delivery.getCreditCard();
         Customer   customer   = delivery.getCustomer();
-        this.repositoryReference.child(newKey).setValue(delivery);
         creditCard.setDeliveryId(newKey).create();
         customer.setDeliveryId(newKey).create();
+        this.repositoryReference.child(newKey).setValue(delivery);
         return model;
     }
 

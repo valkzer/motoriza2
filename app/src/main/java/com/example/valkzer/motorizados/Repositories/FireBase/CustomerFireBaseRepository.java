@@ -32,6 +32,7 @@ public class CustomerFireBaseRepository extends BaseFireBaseRepository implement
         String   newKey   = this.repositoryReference.push().getKey();
         Customer customer = (Customer) model;
         this.repositoryReference.child(newKey).setValue(customer);
+        customer.setId(newKey);
         return model;
     }
 

@@ -31,6 +31,7 @@ public class CreditCardFireBaseRepository extends BaseFireBaseRepository impleme
         String     newKey     = this.repositoryReference.push().getKey();
         CreditCard creditCard = (CreditCard) model;
         this.repositoryReference.child(newKey).setValue(creditCard);
+        creditCard.setId(newKey);
         return model;
     }
 
