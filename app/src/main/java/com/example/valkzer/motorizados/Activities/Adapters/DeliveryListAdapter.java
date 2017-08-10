@@ -15,14 +15,15 @@ public class DeliveryListAdapter extends RecyclerView.Adapter<DeliveryListAdapte
 
     private List<Delivery> deliveryList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, address, phone;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView name, address, phone;
 
-        public MyViewHolder(View view)
+        MyViewHolder(View view)
         {
             super(view);
             name = (TextView) view.findViewById(R.id.lblName);
             phone = (TextView) view.findViewById(R.id.lblPhone);
+            address = (TextView) view.findViewById(R.id.lblAddress);
         }
     }
 
@@ -47,6 +48,7 @@ public class DeliveryListAdapter extends RecyclerView.Adapter<DeliveryListAdapte
         Delivery delivery = deliveryList.get(position);
         holder.name.setText(delivery.getCustomer().getName());
         holder.phone.setText(delivery.getCustomer().getPhone());
+        holder.address.setText(delivery.getCustomer().getAddress());
     }
 
     @Override
