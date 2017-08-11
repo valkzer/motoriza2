@@ -7,7 +7,7 @@
             android:title="@string/nav_Form" />
         <item
             android:id="@+id/nav_Delivery"
-            android:title="@string/nav_Delivery" />
+            android:title="@string/nav_Deliveries" />
         <item
             android:id="@+id/nav_Login"
             android:title="@string/nav_Login" />

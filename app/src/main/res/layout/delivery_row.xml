@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/lblName"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textSize="16sp"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/lblPhone"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/lblName"/>
 
@@ -31,6 +31,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lblPhone"/>
+
+    <CheckBox
+        android:id="@+id/chkDelivered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:checked="false"
+        android:text="@string/delivered"
+        android:enabled="false"/>
 
 
 </RelativeLayout>

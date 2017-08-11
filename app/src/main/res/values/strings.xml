@@ -105,4 +105,6 @@
     <string name="credit_card_image">Credit Card Image</string>
     <string name="complete">Complete</string>
     <string name="picture">Picture</string>
+    <string name="nav_Deliveries">Deliveries</string>
+    <string name="delivered">Delivered</string>
 </resources>
