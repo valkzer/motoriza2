@@ -8,7 +8,7 @@ public interface RepositoryInterface {
 
     Model create(Model model);
 
-    void find(String id, Observer observer);
+    void find(String id, Observer observer, Boolean keepListening);
 
     void getAll(Observer observer);
 

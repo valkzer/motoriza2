@@ -37,7 +37,7 @@ public class CustomerFireBaseRepository extends BaseFireBaseRepository implement
     }
 
     @Override
-    public void find(String id, final Observer observer)
+    public void find(String id, final Observer observer, Boolean keepListening)
     {
         this.repositoryReference.child(id).addValueEventListener(new ValueEventListener() {
             @Override

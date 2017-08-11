@@ -36,7 +36,7 @@ public class CreditCardFireBaseRepository extends BaseFireBaseRepository impleme
     }
 
     @Override
-    public void find(String id, final Observer observer)
+    public void find(String id, final Observer observer, Boolean keepListening)
     {
         this.repositoryReference.child(id).addValueEventListener(new ValueEventListener() {
             @Override

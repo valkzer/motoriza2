@@ -40,23 +40,42 @@ public class DeliveryFireBaseRepository extends BaseFireBaseRepository implement
     }
 
     @Override
-    public void find(String id, final Observer observer)
+    public void find(String id, final Observer observer, Boolean keepListening)
     {
-        this.repositoryReference.child(id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                Delivery delivery = dataSnapshot.getValue(Delivery.class);
-                delivery.setId(dataSnapshot.getKey());
-                observer.update(observable, delivery);
-            }
+        if (keepListening) {
+            this.repositoryReference.child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    Delivery delivery = dataSnapshot.getValue(Delivery.class);
+                    delivery.setId(dataSnapshot.getKey());
+                    observer.update(observable, delivery);
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError)
-            {
+                @Override
+                public void onCancelled(DatabaseError databaseError)
+                {
 
-            }
-        });
+                }
+            });
+
+        } else {
+            this.repositoryReference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    Delivery delivery = dataSnapshot.getValue(Delivery.class);
+                    delivery.setId(dataSnapshot.getKey());
+                    observer.update(observable, delivery);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError)
+                {
+
+                }
+            });
+        }
     }
 
     @Override

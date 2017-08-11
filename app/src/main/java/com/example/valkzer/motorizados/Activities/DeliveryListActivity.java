@@ -33,7 +33,7 @@ public class DeliveryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_list);
         recyclerView = (RecyclerView) findViewById(R.id.deliveryList);
-        createDummyRecord();
+        //createDummyRecord();
 
         Observer observer = new Observer() {
             @Override
