@@ -81,7 +81,7 @@ public class DeliveryFireBaseRepository extends BaseFireBaseRepository implement
     @Override
     public void getAll(final Observer observer)
     {
-        this.repositoryReference.addChildEventListener(new ChildEventListener() {
+        this.repositoryReference.orderByChild("completed").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s)
             {

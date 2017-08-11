@@ -2,6 +2,7 @@ package com.example.valkzer.motorizados.Activities.Adapters;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ public class DeliveryListAdapter extends RecyclerView.Adapter<DeliveryListAdapte
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, address, phone;
+        CheckBox delivered;
 
         MyViewHolder(View view)
         {
@@ -24,6 +26,7 @@ public class DeliveryListAdapter extends RecyclerView.Adapter<DeliveryListAdapte
             name = (TextView) view.findViewById(R.id.lblName);
             phone = (TextView) view.findViewById(R.id.lblPhone);
             address = (TextView) view.findViewById(R.id.lblAddress);
+            delivered = (CheckBox) view.findViewById(R.id.chkDelivered);
         }
     }
 
@@ -49,6 +52,7 @@ public class DeliveryListAdapter extends RecyclerView.Adapter<DeliveryListAdapte
         holder.name.setText(delivery.getCustomer().getName());
         holder.phone.setText(delivery.getCustomer().getPhone());
         holder.address.setText(delivery.getCustomer().getAddress());
+        holder.delivered.setChecked(delivery.isCompleted());
     }
 
     @Override
