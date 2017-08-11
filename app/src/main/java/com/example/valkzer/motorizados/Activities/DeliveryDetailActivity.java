@@ -37,7 +37,7 @@ public class DeliveryDetailActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.lblCustomerPhone)).setText(delivery.getCustomer().getPhone());
                 ((TextView) findViewById(R.id.lblDeliveryDescription)).setText(delivery.getDescription());
             }
-        });
+        },true);
 
     }
 

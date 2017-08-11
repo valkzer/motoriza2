@@ -24,9 +24,9 @@ public abstract class Model {
         return this.repository.update(this);
     }
 
-    public void find(String id, Observer observer)
+    public void find(String id, Observer observer, Boolean keepListening)
     {
-        this.repository.find(id,observer);
+        this.repository.find(id, observer, keepListening);
     }
 
     public boolean delete()
