@@ -43,6 +43,7 @@ public class CreditCardFireBaseRepository extends BaseFireBaseRepository impleme
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 CreditCard creditCard = dataSnapshot.getValue(CreditCard.class);
+                creditCard.setId(dataSnapshot.getKey());
                 observer.update(observable, creditCard);
             }
 
@@ -121,12 +122,14 @@ public class CreditCardFireBaseRepository extends BaseFireBaseRepository impleme
                 String  cardNumber          = creditCard.getCardNumber() == null ? creditCardFromDB.getCardNumber() : creditCard.getCardNumber();
                 String  cardType            = creditCard.getCardType() == null ? creditCardFromDB.getCardType() : creditCard.getCardType();
                 String  deliveryId          = creditCard.getDeliveryId() == null ? creditCardFromDB.getDeliveryId() : creditCard.getDeliveryId();
+                String  id                  = creditCard.getId() == null ? creditCardFromDB.getId() : creditCard.getId();
 
                 creditCardFromDB.setCardExpirationMonth(cardExpirationMonth);
                 creditCardFromDB.setCardExpirationYear(cardExpirationYear);
                 creditCardFromDB.setCardNumber(cardNumber);
                 creditCardFromDB.setCardType(cardType);
                 creditCardFromDB.setDeliveryId(deliveryId);
+                creditCardFromDB.setId(id);
 
                 Map<String, Object> updates = new HashMap<String, Object>();
                 updates.put("/" + repositoryReference.getKey() + "/" + dataSnapshot.getKey(), creditCardFromDB);

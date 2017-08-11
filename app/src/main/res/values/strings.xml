@@ -93,4 +93,15 @@
     <string name="delivery_detail">Delivery Detail</string>
     <string name="deliver">Deliver</string>
     <string name="customer_details">Customer Details</string>
+    <string name="exp_month">Exp. Month</string>
+    <string name="exp_year">Exp. Year</string>
+    <string name="amount">Amount</string>
+    <string name="credit_card_number">Credit Card Number</string>
+    <string name="credit_card_information">Credit Card Information</string>
+    <string name="work_place">Work place</string>
+    <string name="salary">Salary</string>
+    <string name="customer_information">Customer Information</string>
+    <string name="identification">Identification</string>
+    <string name="credit_card_image">Credit Card Image</string>
+    <string name="complete">Complete</string>
 </resources>

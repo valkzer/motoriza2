@@ -1,19 +1,21 @@
 package com.example.valkzer.motorizados.Activities;
 
-import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.content.Intent;
 import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
-import com.example.valkzer.motorizados.Models.Delivery;
 import com.example.valkzer.motorizados.R;
+import com.example.valkzer.motorizados.Models.Delivery;
 
-import java.util.Observable;
 import java.util.Observer;
+import java.util.Observable;
 
 public class DeliveryDetailActivity extends AppCompatActivity {
+
+    private String deliveryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,11 +23,11 @@ public class DeliveryDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_detail);
 
-        Intent intent     = getIntent();
-        String deliveryId = intent.getStringExtra("deliveryId");
+        Intent intent = getIntent();
+        this.deliveryId = intent.getStringExtra("deliveryId");
 
         Delivery delivery = new Delivery();
-        delivery.find(deliveryId, new Observer() {
+        delivery.find(this.deliveryId, new Observer() {
             @Override
             public void update(Observable o, Object arg)
             {
@@ -52,6 +54,14 @@ public class DeliveryDetailActivity extends AppCompatActivity {
         String phoneNumber = ((TextView) findViewById(R.id.lblCustomerPhone)).getText().toString();
         Intent intent      = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phoneNumber));
+        startActivity(intent);
+    }
+
+
+    public void deliver(View view)
+    {
+        Intent intent = new Intent(this, CompleteDeliveryActivity.class);
+        intent.putExtra("deliveryId", this.deliveryId);
         startActivity(intent);
     }
 }

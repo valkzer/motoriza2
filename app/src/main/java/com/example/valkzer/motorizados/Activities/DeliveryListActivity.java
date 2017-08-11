@@ -69,7 +69,7 @@ public class DeliveryListActivity extends AppCompatActivity {
 
     private void createDummyRecord()
     {
-        Customer   customer   = new Customer("Rolando", "Alajuela", "8889 7894", "rolando@rolando.com", 1000.0, "SJO", "");
+        Customer   customer   = new Customer("Rolando", "Alajuela", "8889 7894", "rolando@rolando.com", 1000.0, "SJO", "", "11920030");
         CreditCard creditCard = new CreditCard("**** **** **** 2410", 12, 12, "VISA");
         Delivery   delivery   = new Delivery(customer, creditCard, 10.0, false, "Core i9");
         delivery.create();
