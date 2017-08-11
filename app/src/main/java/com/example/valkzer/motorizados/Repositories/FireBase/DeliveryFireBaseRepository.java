@@ -47,6 +47,7 @@ public class DeliveryFireBaseRepository extends BaseFireBaseRepository implement
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 Delivery delivery = dataSnapshot.getValue(Delivery.class);
+                delivery.setId(dataSnapshot.getKey());
                 observer.update(observable, delivery);
             }
 

@@ -44,6 +44,7 @@ public class CustomerFireBaseRepository extends BaseFireBaseRepository implement
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 Customer customer = dataSnapshot.getValue(Customer.class);
+                customer.setId(dataSnapshot.getKey());
                 observer.update(observable, customer);
             }
 
@@ -125,6 +126,8 @@ public class CustomerFireBaseRepository extends BaseFireBaseRepository implement
                 String phone                 = customer.getPhone() == null ? customerFromDB.getPhone() : customer.getPhone();
                 Double salary                = customer.getSalary() == null ? customerFromDB.getSalary() : customer.getSalary();
                 String workPlace             = customer.getWorkPlace() == null ? customerFromDB.getWorkPlace() : customer.getWorkPlace();
+                String identification        = customer.getIdentification() == null ? customerFromDB.getIdentification() : customer.getIdentification();
+                String id                    = customer.getId() == null ? customerFromDB.getId() : customer.getId();
 
                 customerFromDB.setDeliveryId(deliveryId);
                 customerFromDB.setAddress(address);
@@ -134,6 +137,8 @@ public class CustomerFireBaseRepository extends BaseFireBaseRepository implement
                 customerFromDB.setPhone(phone);
                 customerFromDB.setSalary(salary);
                 customerFromDB.setWorkPlace(workPlace);
+                customerFromDB.setIdentification(identification);
+                customerFromDB.setId(id);
 
                 Map<String, Object> updates = new HashMap<String, Object>();
                 updates.put("/" + repositoryReference.getKey() + "/" + dataSnapshot.getKey(), customerFromDB);

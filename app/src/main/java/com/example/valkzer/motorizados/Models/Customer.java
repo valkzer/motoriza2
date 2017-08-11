@@ -13,6 +13,7 @@ public class Customer extends Model {
     private String workPlace             = "";
     private String identificationPicture = "";
     private String deliveryId            = null;
+    private String identification        = "";
 
     public Customer()
     {
@@ -26,7 +27,7 @@ public class Customer extends Model {
         this.id = id;
     }
 
-    public Customer(String name, String address, String phone, String email, Double salary, String workPlace, String identificationPicture)
+    public Customer(String name, String address, String phone, String email, Double salary, String workPlace, String identificationPicture, String identification)
     {
         super(new CustomerFireBaseRepository());
         this.name = name;
@@ -36,6 +37,7 @@ public class Customer extends Model {
         this.salary = salary;
         this.workPlace = workPlace;
         this.identificationPicture = identificationPicture;
+        this.identification = identification;
     }
 
     //region Setters and Getters
@@ -119,6 +121,16 @@ public class Customer extends Model {
     public void setIdentificationPicture(String identificationPicture)
     {
         this.identificationPicture = identificationPicture;
+    }
+
+    public String getIdentification()
+    {
+        return identification;
+    }
+
+    public void setIdentification(String identification)
+    {
+        this.identification = identification;
     }
 
     //endregion
