@@ -39,6 +39,7 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
     private String           deliveryId;
     private ImageView        identificationPicture;
     private StorageReference mStorageRef;
+    private Delivery         delivery;
     private String identificationPictureUrl = null;
 
     @Override
@@ -158,8 +159,18 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
                                 {
-                                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                    identificationPictureUrl = downloadUrl.toString();
+                                    final Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
+                                    (new Delivery()).find(deliveryId, new Observer() {
+                                        @Override
+                                        public void update(Observable o, Object arg)
+                                        {
+                                            Delivery delivery = (Delivery) arg;
+                                            delivery.getCustomer().setIdentificationPicture(downloadUrl.toString());
+                                            delivery.update();
+                                        }
+                                    }, false);
+
 
                                 }
                             })
