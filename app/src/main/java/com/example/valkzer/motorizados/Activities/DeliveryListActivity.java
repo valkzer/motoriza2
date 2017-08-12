@@ -33,7 +33,7 @@ public class DeliveryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_list);
         recyclerView = (RecyclerView) findViewById(R.id.deliveryList);
-        createDummyRecord();
+//        createDummyRecord();
 
         Observer observer = new Observer() {
             @Override
@@ -52,7 +52,13 @@ public class DeliveryListActivity extends AppCompatActivity {
             public void onClick(View view, int position)
             {
                 Delivery delivery = deliveryList.get(position);
-                Intent   intent   = new Intent(context, DeliveryDetailActivity.class);
+                Intent   intent;
+                if (delivery.isCompleted()) {
+                    intent = new Intent(context, DeliveryOverviewActivity.class);
+                } else {
+                    intent = new Intent(context, DeliveryDetailActivity.class);
+                }
+
                 intent.putExtra("deliveryId", delivery.getId());
                 startActivity(intent);
             }
