@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -26,11 +26,13 @@
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="@string/signed_out" />
+            android:text="@string/signed_out"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
+            android:visibility="invisible"
             tools:text="Firebase User ID: 123456789abc" />
 
     </LinearLayout>

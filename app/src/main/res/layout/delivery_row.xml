@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="10dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animationCache="false"
+    android:background="@drawable/linea"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp">
 
     <TextView
         android:id="@+id/lblName"
@@ -18,19 +19,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/lblPhone"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblName"/>
+        android:layout_below="@id/lblName" />
 
     <TextView
         android:id="@+id/lblAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblPhone"/>
+        android:layout_below="@id/lblPhone" />
 
     <CheckBox
         android:id="@+id/chkDelivered"
@@ -39,8 +40,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:checked="false"
-        android:text="@string/delivered"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:text="@string/delivered" />
 
 
 </RelativeLayout>

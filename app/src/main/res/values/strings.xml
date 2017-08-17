@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Motorizados</string>
-    <string name="title_activity_principal">Principal</string>
+    <string name="title_activity_principal">Motoriza2</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="userEmail">Email</string>
-    <string name="userName">Name</string>
+    <string name="userName">User</string>
 
     <string name="ErrorMessage">Please Login</string>
 
