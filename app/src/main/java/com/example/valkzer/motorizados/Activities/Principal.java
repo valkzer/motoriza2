@@ -1,6 +1,7 @@
 package com.example.valkzer.motorizados.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,12 +14,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.valkzer.motorizados.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,8 +53,30 @@ public class Principal extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        getInfoUser();
+    }
+
+
+    private void getInfoUser() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+
+            TextView userEmail = ((TextView)(navigationView.getHeaderView(0).findViewById(R.id.txtUserEmail)));
+                userEmail.setText(email);
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+        }
     }
 
     @Override
@@ -62,6 +94,7 @@ public class Principal extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.principal, menu);
         return true;
     }
@@ -87,12 +120,26 @@ public class Principal extends AppCompatActivity
     {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_Form) {
+            if(currentUser != null){
+                Toast.makeText(this.getApplicationContext(),"Prueba de Usuario",Toast.LENGTH_SHORT).show();
+            }
+            else{
+
+                Toast.makeText(this.getApplicationContext(),R.string.ErrorMessage ,Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
+            }
             // Handle the camera action
         } else if (id == R.id.nav_Delivery) {
-            Intent loginIntent = new Intent(this, DeliveryListActivity.class);
-            startActivity(loginIntent);
+            if(currentUser != null){
+                Intent loginIntent = new Intent(this, DeliveryListActivity.class);
+                startActivity(loginIntent);
+            }
+            else{
+
+                Toast.makeText(this.getApplicationContext(),R.string.ErrorMessage,Toast.LENGTH_SHORT).show();
+                invalidateOptionsMenu();
+            }
         } else if (id == R.id.nav_Login) {
             Intent loginIntent = new Intent(this, Login.class);
             startActivity(loginIntent);

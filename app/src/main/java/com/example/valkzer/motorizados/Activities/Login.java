@@ -196,8 +196,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void OnClickSms(View v){
-        Intent smsActivity = new Intent(this, Principal.class);
-        startActivity(smsActivity);
+        Intent FaceBook = new Intent(this, Facebook.class);
+        startActivity(FaceBook);
     }
 
     public void onClickGoogle(View v){

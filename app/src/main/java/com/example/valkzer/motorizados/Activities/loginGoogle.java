@@ -159,6 +159,12 @@ public class loginGoogle extends AppCompatActivity implements GoogleApiClient.On
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
+            //Aqui es donde necesito cambiar el valor de la String
+             user.getDisplayName();
+            // porque necesita cambiar eso?
+            //Para asignarle ese el valor del get displayname a la string UserName
+
+
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
