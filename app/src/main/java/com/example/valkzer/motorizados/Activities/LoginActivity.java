@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText mEmailField;
     private EditText mPasswordField;
@@ -196,12 +196,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void OnClickSms(View v){
-        Intent FaceBook = new Intent(this, Facebook.class);
+        Intent FaceBook = new Intent(this, LoginFacebookActivity.class);
         startActivity(FaceBook);
     }
 
     public void onClickGoogle(View v){
-        Intent googleActivity = new Intent(this, loginGoogle.class);
+        Intent googleActivity = new Intent(this, LoginGoogleActivity.class);
         startActivity(googleActivity);
     }
 

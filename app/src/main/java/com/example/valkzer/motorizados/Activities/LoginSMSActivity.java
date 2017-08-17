@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.valkzer.motorizados.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class smsActivity extends AppCompatActivity {
+public class LoginSMSActivity extends AppCompatActivity {
 
     private static final String KEY_VERIFY_IN_PROGRESS = "key_verify_in_progress";
 
@@ -46,6 +46,6 @@ public class smsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms);
+        setContentView(R.layout.activity_login_sms);
     }
 }
