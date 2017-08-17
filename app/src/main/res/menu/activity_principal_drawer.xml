@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Form"
             android:title="@string/nav_Form" />
         <item
+            android:id="@+id/nav_Login"
+            android:title="@string/nav_Login" />
+        <item
             android:id="@+id/nav_Delivery"
             android:title="@string/nav_Deliveries" />
         <item
-            android:id="@+id/nav_Login"
-            android:title="@string/nav_Login" />
+            android:id="@+id/nav_Customer"
+            android:title="@string/nav_Customer" />
     </group>
 </menu>

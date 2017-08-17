@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
+import static com.example.valkzer.motorizados.R.layout.activity_customer;
+
 public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -143,6 +145,9 @@ public class Principal extends AppCompatActivity
         } else if (id == R.id.nav_Login) {
             Intent loginIntent = new Intent(this, Login.class);
             startActivity(loginIntent);
+        }else if (id == R.id.nav_Customer) {
+            Intent customer  = new Intent(this, activity_customer.class );
+            startActivity(customer);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -21,9 +21,10 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="nav_Form">Form</string>
-    <string name="nav_Delivery">Delivery</string>
-    <string name="nav_Login">Login</string>
+    <string name="nav_Form">Formulario</string>
+    <string name="nav_Delivery">Entrega</string>
+    <string name="nav_Login">Inicio Sesión</string>
+    <string name="nav_Customer">Cliente</string>
 
     <!-- Strings for login -->
     <string name="loading">Conectando...</string>

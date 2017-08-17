@@ -159,7 +159,7 @@
 
     <ImageView
         android:id="@+id/imgCustomerIdentificationPicture"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="225dp"
         android:layout_marginTop="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
