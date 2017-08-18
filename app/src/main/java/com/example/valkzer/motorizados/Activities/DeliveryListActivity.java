@@ -33,7 +33,7 @@ public class DeliveryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_list);
         recyclerView = (RecyclerView) findViewById(R.id.deliveryList);
-//        createDummyRecord();
+
 
         Observer observer = new Observer() {
             @Override
@@ -71,14 +71,6 @@ public class DeliveryListActivity extends AppCompatActivity {
         }));
 
 
-    }
-
-    private void createDummyRecord()
-    {
-        Customer   customer   = new Customer("Rolando", "Alajuela", "8889 7894", "rolando@rolando.com", 1000.0, "SJO", "", "11920030");
-        CreditCard creditCard = new CreditCard("**** **** **** 2410", 12, 12, "VISA");
-        Delivery   delivery   = new Delivery(customer, creditCard, 10.0, false, "Core i9");
-        delivery.create();
     }
 
     private void fillDeliveryList()
