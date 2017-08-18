@@ -3,7 +3,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_100"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:weightSum="4">
 
@@ -20,16 +20,19 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
             android:text="@string/phone_title_text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="@string/signed_out" />
+            android:text="@string/signed_out"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <TextView
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             tools:text="Firebase User ID: 123456789abc" />
 
     </LinearLayout>
@@ -39,7 +42,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/grey_300"
         android:gravity="center_vertical">
 
         <LinearLayout

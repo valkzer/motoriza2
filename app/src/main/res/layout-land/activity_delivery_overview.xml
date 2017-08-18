@@ -1,169 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background1"
     tools:context="com.example.valkzer.motorizados.Activities.DeliveryOverviewActivity">
 
     <TextView
         android:id="@+id/lblCustomer"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Customer"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"/>
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/lblCustomerName"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomer"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomer"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/lblCustomerPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/lblCustomerName"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomer"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <TextView
         android:id="@+id/lblCustomerAddress"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerIdentification"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerName"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/lblCustomerIdentification"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerName"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintLeft_toRightOf="@+id/lblCustomerPhone"
+        tools:layout_editor_absoluteY="32dp" />
 
     <TextView
         android:id="@+id/lblCustomerSalary"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintLeft_toRightOf="@+id/lblCustomerIdentification"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerPhone"/>
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="32dp" />
 
     <TextView
         android:id="@+id/lblCreditCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:text="Credit Card"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/imgCustomerIdentificationPicture"/>
+        android:text="Credit Card"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerAddress" />
 
     <TextView
         android:id="@+id/lblCreditCardNumber"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard"/>
+        app:layout_constraintRight_toLeftOf="@+id/lblCreditCardType"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblCreditCardType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="7dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber"
-        android:layout_marginStart="16dp"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintRight_toLeftOf="@+id/lblCreditCardExpirationMonth"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblCreditCardExpirationMonth"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintRight_toLeftOf="@+id/lblCreditCardExpirationYear"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber"/>
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblCreditCardExpirationYear"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="43dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber"/>
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintRight_toLeftOf="@+id/imgCustomerIdentificationPicture"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblDelivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="11dp"
         android:text="Delivery"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardType"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
 
     <TextView
         android:id="@+id/lblDeliveryCost"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblDelivery"/>
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imgCustomerIdentificationPicture"
+        app:layout_constraintTop_toBottomOf="@+id/lblDelivery" />
 
     <TextView
         android:id="@+id/lblDeliveryDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="244dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toRightOf="@+id/lblDeliveryCost"
-        app:layout_constraintTop_toBottomOf="@+id/lblDelivery"/>
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/lblDeliveryCost"
+        app:layout_constraintTop_toBottomOf="@+id/lblDelivery"
+        app:layout_constraintVertical_bias="0.529" />
 
     <ImageView
         android:id="@+id/imgCustomerIdentificationPicture"
-        android:layout_width="0dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="191dp"
+        android:layout_height="163dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerAddress"
-        app:srcCompat="@drawable/ic_menu_gallery"/>
+        app:srcCompat="@drawable/ic_menu_gallery"
+        tools:layout_editor_absoluteY="72dp" />
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_google_signin_btn_text_dark_default"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:weightSum="4">
 
@@ -23,6 +23,7 @@
             android:layout_weight="1"
             android:paddingTop="2dp"
             android:text="@string/correo_contrasena_title_text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
 
@@ -131,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:background="@color/common_google_signin_btn_text_dark_default"
             android:onClick="OnClickSms"
             app:srcCompat="@drawable/sms" />
 
@@ -140,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@color/common_google_signin_btn_text_dark_disabled"
+            android:background="@color/common_google_signin_btn_text_dark_default"
             android:onClick="onClickGoogle"
             app:srcCompat="@drawable/google" />
     </LinearLayout>

@@ -4,7 +4,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_google_signin_btn_text_dark_default"
+    android:background="@drawable/background1"
     android:orientation="vertical"
     android:weightSum="4">
 
@@ -23,6 +23,8 @@
             android:layout_weight="1"
             android:paddingTop="2dp"
             android:text="@string/correo_contrasena_title_text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
 
@@ -33,7 +35,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:background="@android:color/white"
         android:gravity="center_vertical">
 
         <LinearLayout

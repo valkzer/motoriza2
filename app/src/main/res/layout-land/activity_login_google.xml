@@ -3,7 +3,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/background1"
     android:orientation="vertical"
     android:weightSum="4">
 
@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
             android:text="@string/google_title_text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
         <TextView
@@ -41,8 +42,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/common_google_signin_btn_text_dark_default">
+        android:layout_weight="1">
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"

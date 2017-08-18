@@ -8,6 +8,8 @@
     <string name="userEmail">Email</string>
     <string name="userName">User</string>
 
+    <string name="createCustomer">Create Customer</string>
+
     <string name="ErrorMessage">Please Login</string>
 
     <string name="facebook_app_id">272966253190592</string>
