@@ -13,13 +13,14 @@ import com.example.valkzer.motorizados.R;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CreateCustomerActivity extends AppCompatActivity {
+public class CreateCustomerActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_customer);
+        super.setUpNavigation();
         final Button btnCreateCustomer = (Button) findViewById(R.id.button3);
         btnCreateCustomer.setOnClickListener(new View.OnClickListener() {
             @Override

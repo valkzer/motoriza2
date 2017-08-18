@@ -2,6 +2,7 @@ package com.example.valkzer.motorizados.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -41,15 +43,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
     }
 
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         // se Revisa si el usuario está autenticado y se actualiza la info
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
-    private void createAccount(String email, String password) {
-        Toast.makeText(this, "Creando cuenta: "+email, Toast.LENGTH_SHORT).show();
+    private void createAccount(String email, String password)
+    {
+        Toast.makeText(this, "Creando cuenta: " + email, Toast.LENGTH_SHORT).show();
         if (!validateForm()) { //se valida que la inf esté (correo y contraseña)
             return;
         }
@@ -57,32 +61,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // se intenta crear el usuario
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Si el usuario se logró crear se actualiza la info
-                            Toast.makeText(getApplicationContext(), "Usuario: Creado OK!", Toast.LENGTH_SHORT).show();
+             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                 @Override
+                 public void onComplete(@NonNull Task<AuthResult> task)
+                 {
+                     if (task.isSuccessful()) {
+                         // Si el usuario se logró crear se actualiza la info
+                         Toast.makeText(getApplicationContext(), "Usuario: Creado OK!", Toast.LENGTH_SHORT).show();
 
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                         FirebaseUser user = mAuth.getCurrentUser();
+                         updateUI(user);
 
-                            Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        } else {
-                            //Si falló la creación se informa y se actualiza
-                            Toast.makeText(getApplicationContext(), "Falló la creación",Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                         Intent intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                         startActivity(intent);
+                     } else {
+                         //Si falló la creación se informa y se actualiza
+                         Toast.makeText(getApplicationContext(), "Falló la creación", Toast.LENGTH_SHORT).show();
+                         updateUI(null);
+                     }
 
-                        hideProgressDialog();
-                    }
-                });
+                     hideProgressDialog();
+                 }
+             });
     }
 
-    private void signIn(String email, String password) {
-        Toast.makeText(getApplicationContext(), "Conectando usuario: "+email, Toast.LENGTH_SHORT).show();
+    private void signIn(String email, String password)
+    {
+        Toast.makeText(getApplicationContext(), "Conectando usuario: " + email, Toast.LENGTH_SHORT).show();
         if (!validateForm()) {  //se valida que la información este (correo/contraseña)
             return;
         }
@@ -91,65 +97,75 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // se inicia la autenticación
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Se autenticó y se actualiza la info
-                            Toast.makeText(getApplicationContext(), "Usuario: autenticado OK!", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                 @Override
+                 public void onComplete(@NonNull Task<AuthResult> task)
+                 {
+                     if (task.isSuccessful()) {
+                         // Se autenticó y se actualiza la info
+                         Toast.makeText(getApplicationContext(), "Usuario: autenticado OK!", Toast.LENGTH_SHORT).show();
+                         FirebaseUser user = mAuth.getCurrentUser();
+                         updateUI(user);
 
-                            Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        } else {
-                            // No se autenticó y se actualiza la info
-                            Toast.makeText(getApplicationContext(), "Falló autenticación",Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                            //mStatusTextView.setText(R.string.auth_failed);
-                        }
-                        hideProgressDialog();
 
-                    }
-                });
+
+                         Intent intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                         intent.putExtra("user_name", user.getDisplayName());
+                         intent.putExtra("user_email", user.getEmail());
+                         intent.putExtra("user_photo", user.getPhotoUrl());
+                         startActivity(intent);
+                     } else {
+                         // No se autenticó y se actualiza la info
+                         Toast.makeText(getApplicationContext(), "Falló autenticación", Toast.LENGTH_SHORT).show();
+                         updateUI(null);
+                     }
+                     if (!task.isSuccessful()) {
+                         Toast.makeText(getApplicationContext(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
+                         //mStatusTextView.setText(R.string.auth_failed);
+                     }
+                     hideProgressDialog();
+
+                 }
+             });
     }
 
     //se desconecta el usuario
-    private void signOut() {
+    private void signOut()
+    {
         mAuth.signOut();
         updateUI(null);
     }
 
     //Enviar un correo de verificación
-    private void sendEmailVerification() {
+    private void sendEmailVerification()
+    {
         // Deshabilitar el boton
         findViewById(R.id.verify_email_button).setEnabled(false);
 
         // Enviar un correo para verificar usuario
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        //se habilita el boton para verificar
-                        findViewById(R.id.verify_email_button).setEnabled(true);
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),"Correo enviado a: " + user.getEmail(),Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext(),"Falló el envio de correo: ",Toast.LENGTH_SHORT).show();
-                        }
+            .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task)
+                {
+                    //se habilita el boton para verificar
+                    findViewById(R.id.verify_email_button).setEnabled(true);
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "Correo enviado a: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Falló el envio de correo: ", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
     }
 
     //Este método básicamente  valida que la información se digitara bien
-    private boolean validateForm() {
+    private boolean validateForm()
+    {
         boolean valid = true;
-        String email = mEmailField.getText().toString();
+        String  email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
             mEmailField.setError("Requerido!");
             valid = false;
@@ -167,7 +183,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //este método básicamente actualiza la información en el layout
-    private void updateUI(FirebaseUser user) {
+    private void updateUI(FirebaseUser user)
+    {
         hideProgressDialog();
         if (user != null) {
 
@@ -190,7 +207,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         int i = v.getId();
         if (i == R.id.email_create_account_button) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
@@ -203,12 +221,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void OnClickSms(View v){
+    public void OnClickSms(View v)
+    {
         Intent FaceBook = new Intent(this, LoginFacebookActivity.class);
         startActivity(FaceBook);
     }
 
-    public void onClickGoogle(View v){
+    public void onClickGoogle(View v)
+    {
         Intent googleActivity = new Intent(this, LoginGoogleActivity.class);
         startActivity(googleActivity);
     }
@@ -216,7 +236,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
 
-    public void showProgressDialog() {
+    public void showProgressDialog()
+    {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setMessage(getString(R.string.loading));
@@ -226,19 +247,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mProgressDialog.show();
     }
 
-    public void hideProgressDialog() {
+    public void hideProgressDialog()
+    {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
     }
 
     @Override
-    public void onStop() {
+    public void onStop()
+    {
         super.onStop();
         hideProgressDialog();
     }
-
-
 
 
 }

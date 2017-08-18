@@ -1,6 +1,9 @@
 package com.example.valkzer.motorizados.Activities;
 
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.transition.Visibility;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
@@ -10,12 +13,10 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.view.GravityCompat;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.design.widget.FloatingActionButton;
 
 import com.squareup.picasso.Picasso;
 import com.example.valkzer.motorizados.R;
@@ -25,23 +26,44 @@ import com.google.firebase.auth.FirebaseUser;
 public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
-    private FirebaseAuth mAuth;
-    private FirebaseUser currentUser;
+    private FirebaseUser                   currentUser;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth                   mAuth;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = getAuthStateListener();
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 
     protected void setUpNavigation()
     {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,44 +77,52 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         navigationView.requestLayout();
     }
 
-    @Override
-    protected void onResume()
+    protected FirebaseAuth.AuthStateListener getAuthStateListener()
     {
-        super.onResume();
-        getInfoUser();
+        return new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth)
+            {
+                FirebaseUser user           = firebaseAuth.getCurrentUser();
+                MenuItem     menuItemLogin  = navigationView.getMenu().findItem(R.id.nav_Login);
+                MenuItem     menuDeliveries = navigationView.getMenu().findItem(R.id.nav_Customer);
+                MenuItem     menuCustomers  = navigationView.getMenu().findItem(R.id.nav_Delivery);
+                currentUser = user;
+                if (user != null) {
+                    String user_name      = user.getDisplayName();
+                    String user_email     = user.getEmail();
+                    Uri    user_photo_uri = user.getPhotoUrl();
+
+                    TextView  userEmail   = ((TextView) (navigationView.getHeaderView(0).findViewById(R.id.txtUserEmail)));
+                    TextView  txtUserName = ((TextView) (navigationView.getHeaderView(0).findViewById(R.id.txtUserName)));
+                    ImageView userPicture = ((ImageView) (navigationView.getHeaderView(0).findViewById(R.id.imgPicture)));
+
+
+                    if (user_name != null) {
+                        txtUserName.setText(user_name);
+                    }
+
+                    if (user_email != null) {
+                        userEmail.setText(user_email);
+                    }
+
+                    if (user_photo_uri != null) {
+                        Picasso.with(getApplicationContext()).load(user_photo_uri).into(userPicture);
+                    }
+
+                    menuItemLogin.setVisible(false);
+                    menuDeliveries.setVisible(true);
+                    menuCustomers.setVisible(true);
+
+                } else {
+                    menuItemLogin.setVisible(true);
+                    menuDeliveries.setVisible(false);
+                    menuCustomers.setVisible(false);
+                }
+            }
+        };
     }
 
-
-    private void getInfoUser()
-    {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        currentUser = user;
-        if (user != null) {
-            String name     = user.getDisplayName();
-            String email    = user.getEmail();
-            Uri    photoUrl = user.getPhotoUrl();
-
-            TextView userEmail = ((TextView) (navigationView.getHeaderView(0).findViewById(R.id.txtUserEmail)));
-            userEmail.setText(email);
-
-            TextView userName = ((TextView) (navigationView.getHeaderView(0).findViewById(R.id.txtUserName)));
-            if (name != null) {
-                userName.setText(name);
-            } else {
-                userName.setText(R.string.userName);
-            }
-
-            ImageView userPicture = ((ImageView) (navigationView.getHeaderView(0).findViewById(R.id.imgPicture)));
-            if (photoUrl != null) {
-                Picasso.with(this.getApplicationContext()).load(photoUrl).into(userPicture);
-            }
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            String uid = user.getUid();
-        }
-    }
 
     @Override
     public void onBackPressed()
@@ -135,9 +165,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
     {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_Form) {
-            // Handle the camera action
-        } else if (id == R.id.nav_Delivery) {
+        if (id == R.id.nav_Delivery) {
             if (currentUser != null) {
                 Intent loginIntent = new Intent(this, DeliveryListActivity.class);
                 startActivity(loginIntent);
