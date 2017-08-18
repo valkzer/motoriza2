@@ -66,6 +66,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+
+                            Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         } else {
                             //Si falló la creación se informa y se actualiza
                             Toast.makeText(getApplicationContext(), "Falló la creación",Toast.LENGTH_SHORT).show();
@@ -95,6 +99,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(getApplicationContext(), "Usuario: autenticado OK!", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+
+                            Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         } else {
                             // No se autenticó y se actualiza la info
                             Toast.makeText(getApplicationContext(), "Falló autenticación",Toast.LENGTH_SHORT).show();

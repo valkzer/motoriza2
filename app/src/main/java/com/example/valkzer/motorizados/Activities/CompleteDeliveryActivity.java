@@ -5,6 +5,8 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Environment;
 import android.content.Intent;
@@ -30,6 +32,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Observer;
 import java.util.Observable;
 
@@ -50,11 +53,25 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
+        fillCreditCardTypeSpinner();
+
         Intent intent = getIntent();
         this.deliveryId = intent.getStringExtra("deliveryId");
 
         this.identificationPicture = (ImageView) findViewById(R.id.imgIdentification);
         checkPermissions();
+    }
+
+    private void fillCreditCardTypeSpinner()
+    {
+        ArrayList<String> options = new ArrayList<String>();
+
+        options.add("VISA");
+        options.add("MASTER CARD");
+        options.add("AMERICAN EXPRESS");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options);
+        ((Spinner) findViewById(R.id.cboCreditCardType)).setAdapter(adapter);
     }
 
     public void completeDelivery(View view)
@@ -72,6 +89,9 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 Integer creditCardMonth;
                 Integer creditCardYear;
                 Double  deliveryCost;
+                String  creditCardType;
+
+
                 try {
                     customerSalary = Double.parseDouble(((EditText) findViewById(R.id.txtCustomerSalary)).getText().toString());
                 } catch (Exception e) {
@@ -97,6 +117,8 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                     deliveryCost = 0.0;
                 }
 
+                creditCardType = ((Spinner) findViewById(R.id.cboCreditCardType)).getSelectedItem().toString();
+
                 delivery.getCustomer().setIdentification(customerIdentification);
                 delivery.getCustomer().setSalary(customerSalary);
                 delivery.getCustomer().setWorkPlace(customerWorkPlace);
@@ -105,6 +127,7 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 delivery.getCreditCard().setCardNumber(creditCardNumber);
                 delivery.getCreditCard().setCardExpirationYear(creditCardYear);
                 delivery.getCreditCard().setCardExpirationMonth(creditCardMonth);
+                delivery.getCreditCard().setCardType(creditCardType);
 
                 delivery.setCost(deliveryCost);
                 delivery.setCompleted(true);
@@ -112,6 +135,11 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 delivery.update();
                 //TODO: transalation of this, image uploading
                 Toast.makeText(CompleteDeliveryActivity.this, "Delivery Completed", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), DeliveryOverviewActivity.class);
+                intent.putExtra("deliveryId", delivery.getId());
+                startActivity(intent);
+                finish();
             }
         };
         delivery.find(this.deliveryId, observer, false);

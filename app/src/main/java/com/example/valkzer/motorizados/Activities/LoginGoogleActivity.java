@@ -89,6 +89,10 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 //Se autenticó con Firebase mediante Google
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+
+                Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             } else {
                 //Falló la autentización
                 updateUI(null);
@@ -111,6 +115,10 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                             Toast.makeText(getApplicationContext(), "Autenticado con Google: OK!", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+
+                            Intent   intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Autentición falló!", Toast.LENGTH_SHORT).show();
                             updateUI(null);
