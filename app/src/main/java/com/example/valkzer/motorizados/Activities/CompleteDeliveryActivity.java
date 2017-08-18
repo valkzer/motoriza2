@@ -139,6 +139,7 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DeliveryOverviewActivity.class);
                 intent.putExtra("deliveryId", delivery.getId());
                 startActivity(intent);
+                finish();
             }
         };
         delivery.find(this.deliveryId, observer, false);

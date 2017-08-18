@@ -63,5 +63,6 @@ public class DeliveryDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CompleteDeliveryActivity.class);
         intent.putExtra("deliveryId", this.deliveryId);
         startActivity(intent);
+        finish();
     }
 }
