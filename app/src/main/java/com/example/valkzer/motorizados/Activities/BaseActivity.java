@@ -51,6 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.bringToFront();
+        navigationView.requestLayout();
     }
 
     @Override
@@ -80,13 +82,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                 userName.setText(R.string.userName);
             }
 
-
             ImageView userPicture = ((ImageView) (navigationView.getHeaderView(0).findViewById(R.id.imgPicture)));
             if (photoUrl != null) {
                 Picasso.with(this.getApplicationContext()).load(photoUrl).into(userPicture);
             }
-            //Picasso.with(this.getApplicationContext()).load(photoUrl).fit().into(userPicture);
-
 
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
