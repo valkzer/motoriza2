@@ -18,20 +18,21 @@
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        android:visibility="invisible"
+        app:srcCompat="@android:drawable/sym_def_app_icon"/>
 
     <TextView
         android:id="@+id/txtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="@string/userName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <TextView
         android:id="@+id/txtUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/userEmail" />
+        android:text=""/>
 
 </LinearLayout>
