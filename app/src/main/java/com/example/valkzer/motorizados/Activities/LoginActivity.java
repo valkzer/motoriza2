@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onStart()
     {
         super.onStart();
-        // se Revisa si el usuario está autenticado y se actualiza la info
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
@@ -54,19 +53,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void createAccount(String email, String password)
     {
         Toast.makeText(this, "Creando cuenta: " + email, Toast.LENGTH_SHORT).show();
-        if (!validateForm()) { //se valida que la inf esté (correo y contraseña)
+
+        if (!validateForm()) {
             return;
         }
-        showProgressDialog();  //ojo que este llamado es de la clabe base....
 
-        // se intenta crear el usuario
+        showProgressDialog();
+
         mAuth.createUserWithEmailAndPassword(email, password)
              .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                  @Override
                  public void onComplete(@NonNull Task<AuthResult> task)
                  {
                      if (task.isSuccessful()) {
-                         // Si el usuario se logró crear se actualiza la info
                          Toast.makeText(getApplicationContext(), "Usuario: Creado OK!", Toast.LENGTH_SHORT).show();
 
                          FirebaseUser user = mAuth.getCurrentUser();
@@ -76,7 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                          startActivity(intent);
                      } else {
-                         //Si falló la creación se informa y se actualiza
                          Toast.makeText(getApplicationContext(), "Falló la creación", Toast.LENGTH_SHORT).show();
                          updateUI(null);
                      }
@@ -89,25 +87,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void signIn(String email, String password)
     {
         Toast.makeText(getApplicationContext(), "Conectando usuario: " + email, Toast.LENGTH_SHORT).show();
-        if (!validateForm()) {  //se valida que la información este (correo/contraseña)
+        if (!validateForm()) {
             return;
         }
 
         showProgressDialog();
 
-        // se inicia la autenticación
         mAuth.signInWithEmailAndPassword(email, password)
              .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                  @Override
                  public void onComplete(@NonNull Task<AuthResult> task)
                  {
                      if (task.isSuccessful()) {
-                         // Se autenticó y se actualiza la info
                          Toast.makeText(getApplicationContext(), "Usuario: autenticado OK!", Toast.LENGTH_SHORT).show();
                          FirebaseUser user = mAuth.getCurrentUser();
                          updateUI(user);
-
-
 
                          Intent intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -116,13 +110,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                          intent.putExtra("user_photo", user.getPhotoUrl());
                          startActivity(intent);
                      } else {
-                         // No se autenticó y se actualiza la info
                          Toast.makeText(getApplicationContext(), "Falló autenticación", Toast.LENGTH_SHORT).show();
                          updateUI(null);
                      }
                      if (!task.isSuccessful()) {
                          Toast.makeText(getApplicationContext(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
-                         //mStatusTextView.setText(R.string.auth_failed);
                      }
                      hideProgressDialog();
 
@@ -130,27 +122,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
              });
     }
 
-    //se desconecta el usuario
     private void signOut()
     {
         mAuth.signOut();
         updateUI(null);
     }
 
-    //Enviar un correo de verificación
     private void sendEmailVerification()
     {
-        // Deshabilitar el boton
         findViewById(R.id.verify_email_button).setEnabled(false);
 
-        // Enviar un correo para verificar usuario
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
             .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task)
                 {
-                    //se habilita el boton para verificar
                     findViewById(R.id.verify_email_button).setEnabled(true);
                     if (task.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Correo enviado a: " + user.getEmail(), Toast.LENGTH_SHORT).show();
@@ -161,7 +148,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             });
     }
 
-    //Este método básicamente  valida que la información se digitara bien
     private boolean validateForm()
     {
         boolean valid = true;
@@ -182,24 +168,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return valid;
     }
 
-    //este método básicamente actualiza la información en el layout
     private void updateUI(FirebaseUser user)
     {
         hideProgressDialog();
         if (user != null) {
-
-            //mStatusTextView.setText(getString(R.string.correo_contrasena_status_fmt,user.getEmail(), user.isEmailVerified()));
-            //mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
             findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
-
             findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
         } else {
-            //mStatusTextView.setText(R.string.signed_out);
-            //mDetailTextView.setText(null);
-
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
@@ -262,4 +239,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
+    public void onClickAnonymous(View view)
+    {
+        FirebaseAuth.getInstance().signInAnonymously()
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task)
+                        {
+                            if (task.isSuccessful()) {
+
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+
+                                Intent intent = new Intent(getApplicationContext(), DeliveryListActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+
+                            } else {
+
+                                Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
+
+                        }
+                    });
+
+    }
 }

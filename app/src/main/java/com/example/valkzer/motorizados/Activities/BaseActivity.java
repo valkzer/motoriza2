@@ -108,6 +108,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 
                     if (user_photo_uri != null) {
                         Picasso.with(getApplicationContext()).load(user_photo_uri).into(userPicture);
+                        userPicture.setVisibility(View.VISIBLE);
                     }
 
                     menuItemLogin.setVisible(false);
