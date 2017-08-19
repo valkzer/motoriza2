@@ -11,151 +11,153 @@
         android:id="@+id/lblCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="Customer"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCustomerName"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomer" />
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomer"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCustomerPhone"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomer"
         app:layout_constraintLeft_toRightOf="@+id/lblCustomerName"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomer" />
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/lblCustomerAddress"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="89dp" />
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerIdentification"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCustomerIdentification"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerName" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerName"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCustomerSalary"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerPhone"
         app:layout_constraintLeft_toRightOf="@+id/lblCustomerIdentification"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerPhone" />
+        android:layout_marginLeft="8dp" />
 
     <TextView
         android:id="@+id/lblCreditCard"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="Credit Card"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCustomerIdentificationPicture" />
+        android:layout_marginTop="104dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerAddress"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCreditCardNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCreditCardType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
         android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblCreditCardExpirationMonth"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/lblCreditCardExpirationYear"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/lblCreditCardExpirationYear"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblCreditCardExpirationYear"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCard" />
 
     <TextView
         android:id="@+id/lblDelivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="Delivery"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardType" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardType"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblDeliveryCost"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblDelivery" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblDelivery"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/lblDeliveryDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintLeft_toRightOf="@+id/lblDeliveryCost"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblDelivery" />
 
     <ImageView
         android:id="@+id/imgCustomerIdentificationPicture"
         android:layout_width="263dp"
         android:layout_height="104dp"
-        app:srcCompat="@drawable/ic_menu_gallery"
-        tools:layout_editor_absoluteX="378dp"
-        tools:layout_editor_absoluteY="99dp" />
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_gallery" />
 </android.support.constraint.ConstraintLayout>
