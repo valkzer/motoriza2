@@ -1,200 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="com.example.valkzer.motorizados.Activities.CompleteDeliveryActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.valkzer.motorizados.Activities.CompleteDeliveryActivity"
+    tools:openDrawer="start">
 
-    <EditText
-        android:id="@+id/txtCustomerIdentification"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/identification"
-        android:inputType="text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/btnIdentificationPicture"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation"
-        app:layout_constraintHorizontal_bias="0.0" />
-
-    <TextView
-        android:id="@+id/lblCustomerInformation"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/customer_information"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_principal"
+        app:menu="@menu/activity_principal_drawer">
 
-    <EditText
-        android:id="@+id/txtCustomerSalary"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/salary"
-        android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCustomerIdentification"
-        app:layout_constraintHorizontal_bias="0.0" />
+    </android.support.design.widget.NavigationView>
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/txtWorkplace"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/work_place"
-        android:inputType="text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCustomerSalary"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <TextView
-        android:id="@+id/lblCreditCardInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/credit_card_information"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgIdentification" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <EditText
-        android:id="@+id/txtCreditCardNumber"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/credit_card_number"
-        android:inputType="number"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation"
-        app:layout_constraintHorizontal_bias="0.0" />
+        </android.support.design.widget.AppBarLayout>
 
-    <Spinner
-        android:id="@+id/cboCreditCardType"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+        <include layout="@layout/app_bar_principal" />
 
-    <EditText
-        android:id="@+id/txtCreditCardExpMonth"
-        android:layout_width="95dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/exp_month"
-        android:inputType="number"
-        app:layout_constraintLeft_toRightOf="@+id/cboCreditCardType"
-        app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
 
-    <EditText
-        android:id="@+id/txtCreditCardExpYear"
-        android:layout_width="95dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/exp_year"
-        android:inputType="number"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/txtCreditCardExpMonth"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:paddingTop="50dp">
 
-    <EditText
-        android:id="@+id/txtDeliveryAmount"
-        android:layout_width="151dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/grey_100"
-        android:ems="10"
-        android:hint="@string/amount"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCreditCardExpMonth" />
+            <EditText
+                android:id="@+id/txtCustomerIdentification"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/identification"
+                android:inputType="text"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/btnIdentificationPicture"
+                app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation" />
 
-    <Button
-        android:id="@+id/btnIdentificationPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginRight="8dp"
-        android:onClick="selectIdentificationPicture"
-        android:text="@string/picture"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation" />
+            <TextView
+                android:id="@+id/lblCustomerInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/customer_information"
+                android:textColor="@color/common_google_signin_btn_text_dark_default"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="completeDelivery"
-        android:text="@string/complete"
-        app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintLeft_toRightOf="@+id/txtDeliveryAmount"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCreditCardExpMonth" />
+            <EditText
+                android:id="@+id/txtCustomerSalary"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/salary"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCustomerIdentification" />
 
-    <ImageView
-        android:id="@+id/imgIdentification"
-        android:layout_width="138dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtWorkplace"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+            <EditText
+                android:id="@+id/txtWorkplace"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/work_place"
+                android:inputType="text"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCustomerSalary" />
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/lblCreditCardInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/credit_card_information"
+                app:layout_constraintHorizontal_bias="0.48"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgIdentification" />
+
+            <EditText
+                android:id="@+id/txtCreditCardNumber"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/credit_card_number"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation" />
+
+            <Spinner
+                android:id="@+id/cboCreditCardType"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+
+            <EditText
+                android:id="@+id/txtCreditCardExpMonth"
+                android:layout_width="95dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/exp_month"
+                android:inputType="number"
+                app:layout_constraintLeft_toRightOf="@+id/cboCreditCardType"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+
+            <EditText
+                android:id="@+id/txtCreditCardExpYear"
+                android:layout_width="95dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/exp_year"
+                android:inputType="number"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintLeft_toRightOf="@+id/txtCreditCardExpMonth"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+
+            <EditText
+                android:id="@+id/txtDeliveryAmount"
+                android:layout_width="151dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grey_100"
+                android:ems="10"
+                android:hint="@string/amount"
+                android:inputType="number|numberDecimal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardExpMonth" />
+
+            <Button
+                android:id="@+id/btnIdentificationPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="selectIdentificationPicture"
+                android:text="@string/picture"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="completeDelivery"
+                android:text="@string/complete"
+                app:layout_constraintHorizontal_bias="0.434"
+                app:layout_constraintLeft_toRightOf="@+id/txtDeliveryAmount"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardExpMonth" />
+
+            <ImageView
+                android:id="@+id/imgIdentification"
+                android:layout_width="138dp"
+                android:layout_height="81dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtWorkplace"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>

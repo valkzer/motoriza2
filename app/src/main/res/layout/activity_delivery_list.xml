@@ -10,10 +10,7 @@
                                         tools:context=".Activities.DeliveryListActivity"
                                         tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_principal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <include layout="@layout/app_bar_principal"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
@@ -22,13 +19,24 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_principal"
-        app:menu="@menu/activity_principal_drawer"/>
+        app:menu="@menu/activity_principal_drawer">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/deliveryList"
+    </android.support.design.widget.NavigationView>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        />
+        android:layout_height="match_parent"
+        android:paddingTop="56dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/deliveryList"
+            android:layout_width="304dp"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            tools:layout_editor_absoluteY="81dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.DrawerLayout>
