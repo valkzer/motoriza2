@@ -134,7 +134,7 @@
             android:layout_weight="0.50"
             android:background="@color/common_google_signin_btn_text_dark_disabled"
             android:onClick="OnClickSms"
-            app:srcCompat="@drawable/sms" />
+            app:srcCompat="@drawable/anonimo" />
 
         <ImageButton
             android:id="@+id/google"

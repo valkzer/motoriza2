@@ -87,6 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                 MenuItem     menuItemLogin  = navigationView.getMenu().findItem(R.id.nav_Login);
                 MenuItem     menuDeliveries = navigationView.getMenu().findItem(R.id.nav_Customer);
                 MenuItem     menuCustomers  = navigationView.getMenu().findItem(R.id.nav_Delivery);
+                MenuItem     menuItemLogout  = navigationView.getMenu().findItem(R.id.nav_Logout);
                 currentUser = user;
                 if (user != null) {
                     String user_name      = user.getDisplayName();
@@ -114,11 +115,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                     menuItemLogin.setVisible(false);
                     menuDeliveries.setVisible(true);
                     menuCustomers.setVisible(true);
+                    menuItemLogout.setVisible(true);
 
                 } else {
                     menuItemLogin.setVisible(true);
                     menuDeliveries.setVisible(false);
                     menuCustomers.setVisible(false);
+                    menuItemLogout.setVisible(false);
                 }
             }
         };
@@ -187,6 +190,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                 Toast.makeText(this.getApplicationContext(), R.string.ErrorMessage, Toast.LENGTH_SHORT).show();
                 invalidateOptionsMenu();
             }
+        } else if (id == R.id.nav_Logout) {
+            mAuth.signOut();
+            Intent customer = new Intent(this, MainActivity.class);
+            startActivity(customer);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

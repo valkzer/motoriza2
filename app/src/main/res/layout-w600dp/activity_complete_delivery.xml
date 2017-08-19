@@ -12,28 +12,27 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
         android:hint="@string/identification"
         android:inputType="text"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/txtCustomerSalary"
-        tools:layout_editor_absoluteY="43dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation" />
 
     <TextView
         android:id="@+id/lblCustomerInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/customer_information"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toTopOf="@+id/txtCustomerSalary"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="226dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/txtCustomerSalary"
@@ -44,15 +43,17 @@
         android:hint="@string/salary"
         android:inputType="number"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        tools:layout_editor_absoluteX="211dp"
-        tools:layout_editor_absoluteY="43dp" />
+        app:layout_constraintLeft_toRightOf="@+id/txtCustomerIdentification"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation" />
 
     <EditText
         android:id="@+id/txtWorkplace"
         android:layout_width="374dp"
         android:layout_height="36dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
         android:hint="@string/work_place"
@@ -65,63 +66,67 @@
         android:id="@+id/lblCreditCardInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="27dp"
         android:text="@string/credit_card_information"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toTopOf="@+id/cboCreditCardType"
         app:layout_constraintTop_toBottomOf="@+id/txtWorkplace"
-        tools:layout_editor_absoluteX="222dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.499" />
 
     <EditText
         android:id="@+id/txtCreditCardNumber"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
         android:hint="@string/credit_card_number"
         android:inputType="number"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/cboCreditCardType"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation" />
 
     <Spinner
         android:id="@+id/cboCreditCardType"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginRight="13dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
-        app:layout_constraintRight_toLeftOf="@+id/txtCreditCardExpMonth"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation"
+        app:layout_constraintLeft_toRightOf="@+id/txtCreditCardNumber"
+        android:layout_marginLeft="8dp" />
 
     <EditText
         android:id="@+id/txtCreditCardExpMonth"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginRight="33dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
         android:hint="@string/exp_month"
         android:inputType="number"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintRight_toLeftOf="@+id/txtCreditCardExpYear"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation"
+        app:layout_constraintLeft_toRightOf="@+id/cboCreditCardType"
+        android:layout_marginLeft="8dp" />
 
     <EditText
         android:id="@+id/txtCreditCardExpYear"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginRight="47dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
         android:hint="@string/exp_year"
         android:inputType="number"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="181dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardInformation"
+        app:layout_constraintLeft_toRightOf="@+id/txtCreditCardExpMonth"
+        android:layout_marginLeft="8dp" />
 
     <EditText
         android:id="@+id/txtDeliveryAmount"
@@ -129,7 +134,6 @@
         android:layout_height="41dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:ems="10"
@@ -137,21 +141,20 @@
         android:inputType="number|numberDecimal"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/button4"
         app:layout_constraintTop_toBottomOf="@+id/cboCreditCardType"
-        app:layout_constraintVertical_bias="0.475" />
+        app:layout_constraintVertical_bias="0.474" />
 
     <Button
         android:id="@+id/btnIdentificationPicture"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="47dp"
         android:onClick="selectIdentificationPicture"
         android:text="@string/picture"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="61dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="54dp" />
 
     <Button
         android:id="@+id/button4"
@@ -165,7 +168,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cboCreditCardType"
-        app:layout_constraintVertical_bias="0.555" />
+        app:layout_constraintVertical_bias="0.504"
+        app:layout_constraintLeft_toRightOf="@+id/txtDeliveryAmount"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.455" />
 
     <ImageView
         android:id="@+id/imgIdentification"
@@ -176,6 +182,8 @@
         app:layout_constraintLeft_toRightOf="@+id/txtCustomerSalary"
         app:layout_constraintRight_toLeftOf="@+id/btnIdentificationPicture"
         app:srcCompat="@android:drawable/ic_menu_gallery"
-        tools:layout_editor_absoluteY="43dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerInformation"
+        app:layout_constraintHorizontal_bias="0.515" />
 
 </android.support.constraint.ConstraintLayout>
