@@ -117,4 +117,5 @@
     <string name="delivered">Entregado</string>
     <string name="failed_to_load_image">Falló al cargar la imagen</string>
     <string name="nav_Logout">Cerrar Sesión</string>
+    <string name="credit_card_type">Tipo Tarjeta de Credito</string>
 </resources>

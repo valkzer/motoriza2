@@ -84,7 +84,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Credit Card"
+        android:text="@string/credit_card_number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCustomerIdentificationPicture" />
 
@@ -108,7 +108,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="7dp"
-        android:text="TextView"
+        android:text="@string/credit_card_type"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
 
@@ -139,7 +139,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Delivery"
+        android:text="@string/deliver"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCreditCardType" />
 

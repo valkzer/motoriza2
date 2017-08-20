@@ -99,7 +99,7 @@
     <string name="start_call">Start call</string>
     <string name="view_detail">View detail</string>
     <string name="delivery_detail">Delivery Detail</string>
-    <string name="deliver">Deliver</string>
+    <string name="deliver">Delivery</string>
     <string name="customer_details">Customer Details</string>
     <string name="exp_month">Exp. Month</string>
     <string name="exp_year">Exp. Year</string>
@@ -117,4 +117,5 @@
     <string name="delivered">Delivered</string>
     <string name="failed_to_load_image">Failed to load picture</string>
     <string name="nav_Logout">Logout</string>
+    <string name="credit_card_type">Credit Card Type</string>
 </resources>

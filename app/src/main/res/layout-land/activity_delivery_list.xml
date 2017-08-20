@@ -33,11 +33,12 @@
             android:id="@+id/deliveryList"
             android:layout_width="517dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="0dp"
             android:paddingTop="56dp"
             android:scrollbars="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent">
 
         </android.support.v7.widget.RecyclerView>
     </android.support.constraint.ConstraintLayout>

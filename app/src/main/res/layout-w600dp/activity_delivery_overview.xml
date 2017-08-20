@@ -11,12 +11,12 @@
         android:id="@+id/lblCustomer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Customer"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/customer_information"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblCustomerName"
@@ -71,12 +71,12 @@
         android:id="@+id/lblCreditCard"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Credit Card"
-        android:layout_marginTop="104dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblCustomerAddress"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="104dp"
+        android:text="@string/credit_card_number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCustomerAddress" />
 
     <TextView
         android:id="@+id/lblCreditCardNumber"
@@ -93,12 +93,12 @@
         android:id="@+id/lblCreditCardType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/credit_card_type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCreditCardNumber" />
 
     <TextView
         android:id="@+id/lblCreditCardExpirationMonth"
