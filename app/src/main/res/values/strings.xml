@@ -23,51 +23,51 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="nav_Form">Formulario</string>
-    <string name="nav_Delivery">Entrega</string>
-    <string name="nav_Login">Inicio Sesión</string>
-    <string name="nav_Customer">Cliente</string>
+    <string name="nav_Form">Form</string>
+    <string name="nav_Delivery">Delivery</string>
+    <string name="nav_Login">Log In</string>
+    <string name="nav_Customer">Customer</string>
 
     <!-- Strings for login -->
-    <string name="loading">Conectando...</string>
+    <string name="loading">Connecting...</string>
 
     <!-- Para correo/contraseña y más... -->
-    <string name="label_emailpassword">Autenticación Correo/Contraseña</string>
-    <string name="desc_emailpassword">Usar un correo y contraseña para autenticarse con Firebase.</string>
+    <string name="label_emailpassword">Authentication Mail / Password</string>
+    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
 
-    <string name="correo_contrasena_status_fmt">Correo: %1$s (verificado: %2$b)</string>
+    <string name="correo_contrasena_status_fmt">Email: %1$s (verify: %2$b)</string>
     <string name="correo_contrasena_title_text">Login</string>
 
-    <string name="desconectar">Desconectarse</string>
-    <string name="conectarse">Conectarse</string>
-    <string name="registrarse">Registrarse</string>
+    <string name="desconectar">Log off</string>
+    <string name="conectarse">Connect</string>
+    <string name="registrarse">Check in</string>
 
-    <string name="hint_email">Correo</string>
-    <string name="hint_password">Contraseña</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
 
-    <string name="signed_in">Conectado</string>
-    <string name="signed_out">Desconectado</string>
+    <string name="signed_in">Connected</string>
+    <string name="signed_out">Disconnected</string>
 
-    <string name="auth_failed">Falló la Autenticación</string>
-    <string name="firebase_status_fmt">Usuario de Firebase: %s</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
 
     //para google y más...
-    <string name="google_title_text">Autenticar con Google</string>
-    <string name="sign_out">Desconectar</string>
-    <string name="revoke">Revocar</string>
-    <string name="label_google_sign_in">Autenticación Firebase + Google</string>
-    <string name="desc_google_sign_in">Se utiliza la cta de Google para autenticarse.</string>
-    <string name="google_status_fmt">Usuario Google: %s</string>
+    <string name="google_title_text">Authenticate with Google</string>
+    <string name="sign_out">Disconnect</string>
+    <string name="revoke">Revoke</string>
+    <string name="label_google_sign_in">Firebase + Google Authentication</string>
+    <string name="desc_google_sign_in">Your Google Account is used to authenticate.</string>
+    <string name="google_status_fmt">Google User: %s</string>
 
     //Para autenticarse con codigo desde el telefono
-    <string name="label_phone_auth">Autenticación por código al teléfono</string>
-    <string name="desc_phone_auth">Uso de un sms al teléfono para autenticarse en Firebase.</string>
-    <string name="phone_title_text">Número de teléfono</string>
-    <string name="hint_phone_number">Número de teléfono</string>
-    <string name="hint_verification_code">Código verificación</string>
-    <string name="start_phone_auth">Enviar</string>
-    <string name="verify_phone_auth">Verificar</string>
-    <string name="resend_phone_auth">Reenviar</string>
+    <string name="label_phone_auth">Code Authentication to Phone</string>
+    <string name="desc_phone_auth">Using an sms to phone to authenticate to Firebase.</string>
+    <string name="phone_title_text">Phone number</string>
+    <string name="hint_phone_number">Phone number</string>
+    <string name="hint_verification_code">Verification code</string>
+    <string name="start_phone_auth">Send</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="resend_phone_auth">Resend</string>
 
     <string name="status_code_sent">Code Sent</string>
     <string name="status_verification_failed">Verification failed</string>
