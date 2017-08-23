@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Motorizados</string>
+    <string name="title_activity_principal">Motoriza2</string>
+
+    <string name="navigation_drawer_open">Abrir la pantalla de navegación</string>
+    <string name="navigation_drawer_close">Cerrar la pantalla de navegación</string>
+
+    <string name="userEmail">Correo</string>
+    <string name="userName">Usuario</string>
+
+    <string name="createCustomer">Crear Cliente</string>
+
+    <string name="ErrorMessage">Por favor inicie sesión</string>
+
+    <string name="facebook_app_id">272966253190592</string>
+    <string name="fb_login_protocol_scheme">fb272966253190592</string>
+
+    <string name="action_settings">Configuracion</string>
+    <string name="name">Nombre</string>
+    <string name="phone">Teléfono</string>
+    <string name="address">Dirección</string>
+    <string name="complete_delivery">Completar Entrega</string>
+    <string name="title_activity_login">Registrarse</string>
+
+    <!-- Strings related to login -->
+    <string name="nav_Form">Formulario</string>
+    <string name="nav_Delivery">Entregar</string>
+    <string name="nav_Login">Iniciar Sesión</string>
+    <string name="nav_Customer">Cliente</string>
+
+    <!-- Strings for login -->
+    <string name="loading">Conectando...</string>
+
+    <!-- Para correo/contraseÃ±a y mÃ¡s... -->
+    <string name="label_emailpassword">AutenticaciÃ³n Correo / Contraseña</string>
+    <string name="desc_emailpassword">Utilice un correo electrónico y una contraseña para autenticarse con Firebase.</string>
+
+    <string name="correo_contrasena_status_fmt">Correo: %1$s (verify: %2$b)</string>
+    <string name="correo_contrasena_title_text">Inicie Sesión</string>
+
+    <string name="desconectar">Desconectarse</string>
+    <string name="conectarse">Conectar</string>
+    <string name="registrarse">Registrarse</string>
+
+    <string name="hint_email">Correo</string>
+    <string name="hint_password">Clave</string>
+
+    <string name="signed_in">Conectado</string>
+    <string name="signed_out">Desconectado</string>
+
+    <string name="auth_failed">Autenticación Fallida</string>
+    <string name="firebase_status_fmt">Usuario de Firebase: %s</string>
+
+    //para google y más...
+    <string name="google_title_text">Autenticarse con Google</string>
+    <string name="sign_out">Desconectarse</string>
+    <string name="revoke">Revocar</string>
+    <string name="label_google_sign_in">Autenticación Firebase + Google</string>
+    <string name="desc_google_sign_in">Tu cuenta de Google se utiliza para autenticar.</string>
+    <string name="google_status_fmt">Usuario Google: %s</string>
+
+    //Para autenticarse con codigo desde el telefono
+    <string name="label_phone_auth">Autenticación de código en el teléfono</string>
+    <string name="desc_phone_auth">Utilizar un sms al teléfono para autenticarse en Firebase.</string>
+    <string name="phone_title_text">Número de teléfono</string>
+    <string name="hint_phone_number">Número de teléfono</string>
+    <string name="hint_verification_code">Código de Verificación</string>
+    <string name="start_phone_auth">Enviar</string>
+    <string name="verify_phone_auth">Verificar</string>
+    <string name="resend_phone_auth">Reenviar</string>
+
+    <string name="status_code_sent">Código Enviado</string>
+    <string name="status_verification_failed">Verificación Fallida</string>
+    <string name="status_verification_succeeded">Verificación Exitosa</string>
+    <string name="status_sign_in_failed">Fallo al iniciar sesión</string>
+    <string name="instant_validation">(Validación instantánea)</string>
+
+    <string name="hint_user_id">Identidad de usuario</string>
+    <string name="get_custom_token">Obtener Token</string>
+
+    <string name="verify_email">Verificar correo electrónico</string>
+    <string name="custom_token">Token personalizado</string>
+    <string name="token_null">Token: null</string>
+
+    <string name="desc_firebase_lockup">Logotipo y nombre de Firebase</string>
+
+    <string name="firebase_user_management">Gestión de usuarios de Firebase</string>
+
+    <string name="facebook_status_fmt">Usuario Facebook: %s</string>
+    <string name="facebook_title_text">Inicio con Facebook</string>
+
+    <string name="id_fmt">ID Usuario: %s</string>
+    <string name="email_fmt">Correo: %s</string>
+
+    <!-- Fin -->
+
+    <string name="detail">Detalle</string>
+    <string name="send_sms">Enviar SMS</string>
+    <string name="start_call">Llamar</string>
+    <string name="view_detail">Ver detalle</string>
+    <string name="delivery_detail">Detalle de Entrega</string>
+    <string name="deliver">Entregar</string>
+    <string name="customer_details">Detalle Cliente</string>
+    <string name="exp_month">Mes de Vencimiento</string>
+    <string name="exp_year">Año de Vencimiento</string>
+    <string name="amount">Cantidad</string>
+    <string name="credit_card_number">Número de tarjeta de crédito</string>
+    <string name="credit_card_information">Información de tarjeta de crédito</string>
+    <string name="work_place">Lugar de Trabajo</string>
+    <string name="salary">Salario</string>
+    <string name="customer_information">Información del Cliente</string>
+    <string name="identification">Identificación</string>
+    <string name="credit_card_image">Imagen de tarjeta de crédito</string>
+    <string name="complete">Completo</string>
+    <string name="picture">Imagen</string>
+    <string name="nav_Deliveries">Entregas</string>
+    <string name="delivered">Entregado</string>
+    <string name="failed_to_load_image">Falló al cargar la imagen</string>
+    <string name="nav_Logout">Cerrar Sesión</string>
+    <string name="credit_card_type">Tipo Tarjeta de crédito</string>
+    <string name="ErrorValidateFields">Por Favor Revise el Valor</string>
+</resources>

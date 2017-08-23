@@ -74,6 +74,7 @@
                 android:background="@color/common_google_signin_btn_text_dark_disabled"
                 android:ems="10"
                 android:inputType="textWebEmailAddress"
+                android:phoneNumber="false"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />

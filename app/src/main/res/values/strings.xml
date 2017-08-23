@@ -9,6 +9,7 @@
     <string name="userName">User</string>
 
     <string name="createCustomer">Create Customer</string>
+    <string name="ErrorValidateFields">Please check the Value</string>
 
     <string name="ErrorMessage">Please Login</string>
 

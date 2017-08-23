@@ -1,9 +1,11 @@
 package com.example.valkzer.motorizados.Activities;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -21,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.valkzer.motorizados.Models.Customer;
 import com.example.valkzer.motorizados.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +35,10 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Observer;
 import java.util.Observable;
 
@@ -83,6 +89,8 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
             {
                 Delivery delivery = (Delivery) arg;
 
+                Boolean flag = validateFields();
+
                 String customerIdentification = ((EditText) findViewById(R.id.txtCustomerIdentification)).getText().toString();
 
                 Double  customerSalary;
@@ -98,21 +106,47 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                     customerSalary = 0.0;
                 }
                 String customerWorkPlace = ((EditText) findViewById(R.id.txtWorkplace)).getText().toString();
+
                 String creditCardNumber  = ((EditText) findViewById(R.id.txtCreditCardNumber)).getText().toString();
+                if (creditCardNumber.length() < 16){
+                    ((EditText) findViewById(R.id.txtCreditCardNumber)).setHint("1234123412341234");
+                    ((EditText) findViewById(R.id.txtCreditCardNumber)).setText("");
+                    ((EditText) findViewById(R.id.txtCreditCardNumber)).setError(getResources().getString(R.string.ErrorValidateFields));
+                    return;
+                }
 
                 try {
                     creditCardMonth = Integer.parseInt(((EditText) findViewById(R.id.txtCreditCardExpMonth)).getText().toString());
+                    if (creditCardMonth >= 1 && creditCardMonth <= 12){
+
+                    }
+                    else {
+                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setHint("01");
+                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setText("");
+                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setError(getResources().getString(R.string.ErrorValidateFields));
+                        return;
+                    }
+
                 } catch (Exception e) {
                     creditCardMonth = 0;
-                }
+
+                                  }
                 try {
                     creditCardYear = Integer.parseInt(((EditText) findViewById(R.id.txtCreditCardExpYear)).getText().toString());
+                    SimpleDateFormat formatNowYear = new SimpleDateFormat("yy");
+                    String currentYear =  formatNowYear.format(Calendar.getInstance().getTime());
+                    if (creditCardMonth <= Integer.parseInt(currentYear)){
+                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setHint("" + Calendar.YEAR);
+                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setText("");
+                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setError(getResources().getString(R.string.ErrorValidateFields));
+                        return;
+                    }
                 } catch (Exception e) {
                     creditCardYear = 0;
                 }
 
                 try {
-                    deliveryCost = Double.parseDouble(((EditText) findViewById(R.id.txtCustomerSalary)).getText().toString());
+                    deliveryCost = Double.parseDouble(((EditText) findViewById(R.id.txtDeliveryAmount)).getText().toString());
                 } catch (Exception e) {
                     deliveryCost = 0.0;
                 }
@@ -124,6 +158,7 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 delivery.getCustomer().setWorkPlace(customerWorkPlace);
                 delivery.getCustomer().setIdentificationPicture(identificationPictureUrl);
 
+
                 delivery.getCreditCard().setCardNumber(creditCardNumber);
                 delivery.getCreditCard().setCardExpirationYear(creditCardYear);
                 delivery.getCreditCard().setCardExpirationMonth(creditCardMonth);
@@ -132,17 +167,42 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 delivery.setCost(deliveryCost);
                 delivery.setCompleted(true);
 
-                delivery.update();
-                //TODO: transalation of this, image uploading
-                Toast.makeText(CompleteDeliveryActivity.this, "Delivery Completed", Toast.LENGTH_SHORT).show();
+                if (flag) {
+                    delivery.update();
+                    //TODO: transalation of this, image uploading
+                    Toast.makeText(CompleteDeliveryActivity.this, "Delivery Completed", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), DeliveryOverviewActivity.class);
-                intent.putExtra("deliveryId", delivery.getId());
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(getApplicationContext(), DeliveryOverviewActivity.class);
+                    intent.putExtra("deliveryId", delivery.getId());
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         };
-        delivery.find(this.deliveryId, observer, false);
+       delivery.find(this.deliveryId, observer, false);
+    }
+
+    protected boolean validateFields(){
+        Boolean flag = false;
+        EditText[] arrayEditText = new EditText[]{((EditText)findViewById(R.id.txtCustomerIdentification)),
+                ((EditText)findViewById(R.id.txtCustomerSalary)),
+                ((EditText)findViewById(R.id.txtWorkplace)),
+                ((EditText)findViewById(R.id.txtCreditCardNumber)),
+                ((EditText)findViewById(R.id.txtCreditCardExpMonth)),
+                ((EditText)findViewById(R.id.txtCreditCardExpYear)),
+                ((EditText)findViewById(R.id.txtDeliveryAmount))};
+
+        for (int i = 0; i< arrayEditText.length; i++){
+            if (arrayEditText[i].getText().toString().isEmpty()){
+                arrayEditText[i].setError(getResources().getString(R.string.ErrorValidateFields));
+                flag = false;
+            }
+            else{
+                flag = true;
+            }
+        }
+        return flag;
     }
 
     public void selectIdentificationPicture(View view)
