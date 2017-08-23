@@ -119,4 +119,15 @@
     <string name="failed_to_load_image">Failed to load picture</string>
     <string name="nav_Logout">Logout</string>
     <string name="credit_card_type">Credit Card Type</string>
+    <string name="auth_successful">Successfully authenticated</string>
+    <string name="auth_started">Authentication process started</string>
+    <string name="connection_error">Connection error</string>
+    <string name="develiry_completed">Delivery completed!</string>
+    <string name="creating_account">Creating account…</string>
+    <string name="account_created">Account created!</string>
+    <string name="failed_to_create_account">Failed to create account!</string>
+    <string name="required">This is required!</string>
+    <string name="failed_to_send_verification_email">Failed to send verification email!</string>
+    <string name="verification_email_sent">Verification email sent!</string>
+    <string name="provide_a_valid_email">Provide a valid email!</string>
 </resources>

@@ -107,42 +107,40 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
                 }
                 String customerWorkPlace = ((EditText) findViewById(R.id.txtWorkplace)).getText().toString();
 
-                String creditCardNumber  = ((EditText) findViewById(R.id.txtCreditCardNumber)).getText().toString();
-                if (creditCardNumber.length() < 16){
+                String creditCardNumber = ((EditText) findViewById(R.id.txtCreditCardNumber)).getText().toString();
+                if (creditCardNumber.length() < 16) {
                     ((EditText) findViewById(R.id.txtCreditCardNumber)).setHint("1234123412341234");
                     ((EditText) findViewById(R.id.txtCreditCardNumber)).setText("");
                     ((EditText) findViewById(R.id.txtCreditCardNumber)).setError(getResources().getString(R.string.ErrorValidateFields));
                     return;
                 }
+                int currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                int currentYear  = Calendar.getInstance().get(Calendar.YEAR);
+
+                try {
+                    creditCardYear = Integer.parseInt(((EditText) findViewById(R.id.txtCreditCardExpYear)).getText().toString());
+                } catch (Exception e) {
+                    return;
+                }
+
+                if (creditCardYear < currentYear) {
+                    ((EditText) findViewById(R.id.txtCreditCardExpYear)).setHint("" + currentYear);
+                    ((EditText) findViewById(R.id.txtCreditCardExpYear)).setText("");
+                    ((EditText) findViewById(R.id.txtCreditCardExpYear)).setError(getResources().getString(R.string.ErrorValidateFields));
+                    return;
+                }
 
                 try {
                     creditCardMonth = Integer.parseInt(((EditText) findViewById(R.id.txtCreditCardExpMonth)).getText().toString());
-                    if (creditCardMonth >= 1 && creditCardMonth <= 12){
-
-                    }
-                    else {
-                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setHint("01");
-                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setText("");
-                        ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setError(getResources().getString(R.string.ErrorValidateFields));
-                        return;
-                    }
-
                 } catch (Exception e) {
-                    creditCardMonth = 0;
+                    return;
+                }
 
-                                  }
-                try {
-                    creditCardYear = Integer.parseInt(((EditText) findViewById(R.id.txtCreditCardExpYear)).getText().toString());
-                    SimpleDateFormat formatNowYear = new SimpleDateFormat("yy");
-                    String currentYear =  formatNowYear.format(Calendar.getInstance().getTime());
-                    if (creditCardMonth <= Integer.parseInt(currentYear)){
-                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setHint("" + Calendar.YEAR);
-                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setText("");
-                        ((EditText) findViewById(R.id.txtCreditCardExpYear)).setError(getResources().getString(R.string.ErrorValidateFields));
-                        return;
-                    }
-                } catch (Exception e) {
-                    creditCardYear = 0;
+                if (creditCardMonth < 1 || creditCardMonth > 12 || (creditCardMonth < currentMonth && currentYear == creditCardYear)) {
+                    ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setHint(String.valueOf(currentMonth));
+                    ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setText("");
+                    ((EditText) findViewById(R.id.txtCreditCardExpMonth)).setError(getResources().getString(R.string.ErrorValidateFields));
+                    return;
                 }
 
                 try {
@@ -169,8 +167,7 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
 
                 if (flag) {
                     delivery.update();
-                    //TODO: transalation of this, image uploading
-                    Toast.makeText(CompleteDeliveryActivity.this, "Delivery Completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CompleteDeliveryActivity.this, R.string.develiry_completed, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getApplicationContext(), DeliveryOverviewActivity.class);
                     intent.putExtra("deliveryId", delivery.getId());
@@ -180,25 +177,26 @@ public class CompleteDeliveryActivity extends AppCompatActivity {
 
             }
         };
-       delivery.find(this.deliveryId, observer, false);
+        delivery.find(this.deliveryId, observer, false);
     }
 
-    protected boolean validateFields(){
+    protected boolean validateFields()
+    {
         Boolean flag = false;
-        EditText[] arrayEditText = new EditText[]{((EditText)findViewById(R.id.txtCustomerIdentification)),
-                ((EditText)findViewById(R.id.txtCustomerSalary)),
-                ((EditText)findViewById(R.id.txtWorkplace)),
-                ((EditText)findViewById(R.id.txtCreditCardNumber)),
-                ((EditText)findViewById(R.id.txtCreditCardExpMonth)),
-                ((EditText)findViewById(R.id.txtCreditCardExpYear)),
-                ((EditText)findViewById(R.id.txtDeliveryAmount))};
+        EditText[] arrayEditText = new EditText[]{((EditText) findViewById(R.id.txtCustomerIdentification)),
+                                                  ((EditText) findViewById(R.id.txtCustomerSalary)),
+                                                  ((EditText) findViewById(R.id.txtWorkplace)),
+                                                  ((EditText) findViewById(R.id.txtCreditCardNumber)),
+                                                  ((EditText) findViewById(R.id.txtCreditCardExpMonth)),
+                                                  ((EditText) findViewById(R.id.txtCreditCardExpYear)),
+                                                  ((EditText) findViewById(R.id.txtDeliveryAmount))
+        };
 
-        for (int i = 0; i< arrayEditText.length; i++){
-            if (arrayEditText[i].getText().toString().isEmpty()){
+        for (int i = 0; i < arrayEditText.length; i++) {
+            if (arrayEditText[i].getText().toString().isEmpty()) {
                 arrayEditText[i].setError(getResources().getString(R.string.ErrorValidateFields));
                 flag = false;
-            }
-            else{
+            } else {
                 flag = true;
             }
         }

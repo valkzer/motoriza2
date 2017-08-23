@@ -32,10 +32,9 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    // para utilizar la autenticación dentro de Firebase
     private FirebaseAuth mAuth;
 
-    private GoogleApiClient mGoogleApiClient;   //Para validar con Google
+    private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     @Override
@@ -43,17 +42,14 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_google);
 
-        // tomando la info de los layout
         mStatusTextView = (TextView) findViewById(R.id.status);
         mDetailTextView = (TextView) findViewById(R.id.detail);
 
-        // se hace asi para poder pasar parámetros
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         findViewById(R.id.revoke_button).setOnClickListener(this);
 
 
-        // Configurando Google para validar
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -64,7 +60,6 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        // Inicializando la validación
         mAuth = FirebaseAuth.getInstance();
 
     }
@@ -72,21 +67,17 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
     @Override
     public void onStart() {
         super.onStart();
-        //Se toma el usuario actual ... si está validado
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
 
-    // Llamado a la validación.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Es lo que se devuelve al intentar registrarse
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                //Se autenticó con Firebase mediante Google
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
 
@@ -94,15 +85,13 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             } else {
-                //Falló la autentización
                 updateUI(null);
             }
         }
     }
 
-    // Autentizandose ya en Firebase con la cta Google
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Toast.makeText(this, "Autenticandose con Google: "+acct.getId(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.auth_started), Toast.LENGTH_SHORT).show();
 
         showProgressDialog();
 
@@ -112,7 +101,7 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Autenticado con Google: OK!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),getString(R.string.auth_successful), Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
 
@@ -120,7 +109,7 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Autentición falló!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                         hideProgressDialog();
@@ -128,13 +117,11 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 });
     }
 
-    // lanza el activity para tomar la cta de google y autenticarse
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    //Desconectar la cta de google
     private void signOut() {
         mAuth.signOut();
 
@@ -147,7 +134,6 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 });
     }
 
-    //Quitar la cta de google dentro de las autenticaciones
     private void revokeAccess() {
         mAuth.signOut();
 
@@ -160,18 +146,11 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
                 });
     }
 
-    //Sólo actualiza la info del layout
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
-            //Aqui es donde necesito cambiar el valor de la String
-             user.getDisplayName();
-            // porque necesita cambiar eso?
-            //Para asignarle ese el valor del get displayname a la string UserName
-
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
@@ -186,7 +165,7 @@ public class LoginGoogleActivity extends AppCompatActivity implements GoogleApiC
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(this, "Error de Google Play Services.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.connection_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override

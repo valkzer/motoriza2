@@ -70,13 +70,22 @@ public class DeliveryOverviewActivity extends AppCompatActivity {
                 TextView lblDeliveryCost        = ((TextView) findViewById(R.id.lblDeliveryCost));
                 TextView lblDeliveryDescription = ((TextView) findViewById(R.id.lblDeliveryDescription));
 
+                char[] maskedCreditCardNumberCharacters = delivery.getCreditCard().getCardNumber().toCharArray();
+                int    charCountToMask                  = maskedCreditCardNumberCharacters.length - 4;
+
+                for (int counter = 0; counter < charCountToMask; counter++) {
+                    maskedCreditCardNumberCharacters[counter] = '*';
+                }
+
+                String maskedCreditCard = String.valueOf(maskedCreditCardNumberCharacters);
+
                 lblCustomerName.setText(delivery.getCustomer().getName());
                 lblCustomerAddress.setText(delivery.getCustomer().getAddress());
                 lblCustomerPhone.setText(delivery.getCustomer().getPhone());
                 lblCustomerIdentification.setText(delivery.getCustomer().getIdentification());
                 lblCustomerSalary.setText(delivery.getCustomer().getSalary().toString());
 
-                lblCreditCardNumber.setText(delivery.getCreditCard().getCardNumber());
+                lblCreditCardNumber.setText(maskedCreditCard);
                 lblCreditCardType.setText(delivery.getCreditCard().getCardType());
                 lblCreditCardExpirationMonth.setText(delivery.getCreditCard().getCardExpirationMonth().toString());
                 lblCreditCardExpirationYear.setText(delivery.getCreditCard().getCardExpirationYear().toString());
@@ -87,7 +96,6 @@ public class DeliveryOverviewActivity extends AppCompatActivity {
                 ImageView mainImage = (ImageView) findViewById(R.id.imgCustomerIdentificationPicture);
                 try {
                     Picasso.with(getApplicationContext()).load(delivery.getCustomer().getIdentificationPicture()).into(mainImage);
-//                    Picasso.with(getApplicationContext()).load("https://firebasestorage.googleapis.com/v0/b/motoriza2-1afaf.appspot.com/o/pictures%2Fid_27fcdd64d9ab2f431373f1f10aa39ec2.jpg?alt=media&token=c4c1327f-b238-41da-bfae-d1e319692a4e").into(mainImage);
                 } catch (Exception ignored) {
                     ignored.printStackTrace();
                     Toast.makeText(getApplicationContext(), getString(R.string.failed_to_load_image), Toast.LENGTH_SHORT).show();

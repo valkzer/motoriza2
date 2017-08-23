@@ -2,7 +2,6 @@ package com.example.valkzer.motorizados.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void createAccount(String email, String password)
     {
-        Toast.makeText(this, "Creando cuenta: " + email, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.creating_account, Toast.LENGTH_SHORT).show();
 
         if (!validateForm()) {
             return;
@@ -66,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                  public void onComplete(@NonNull Task<AuthResult> task)
                  {
                      if (task.isSuccessful()) {
-                         Toast.makeText(getApplicationContext(), "Usuario: Creado OK!", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getApplicationContext(), R.string.account_created, Toast.LENGTH_SHORT).show();
 
                          FirebaseUser user = mAuth.getCurrentUser();
                          updateUI(user);
@@ -75,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                          startActivity(intent);
                      } else {
-                         Toast.makeText(getApplicationContext(), "Falló la creación", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getApplicationContext(), R.string.failed_to_create_account, Toast.LENGTH_SHORT).show();
                          updateUI(null);
                      }
 
@@ -86,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void signIn(String email, String password)
     {
-        Toast.makeText(getApplicationContext(), "Conectando usuario: " + email, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.auth_started, Toast.LENGTH_SHORT).show();
         if (!validateForm()) {
             return;
         }
@@ -99,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                  public void onComplete(@NonNull Task<AuthResult> task)
                  {
                      if (task.isSuccessful()) {
-                         Toast.makeText(getApplicationContext(), "Usuario: autenticado OK!", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getApplicationContext(), R.string.auth_successful, Toast.LENGTH_SHORT).show();
                          FirebaseUser user = mAuth.getCurrentUser();
                          updateUI(user);
 
@@ -110,11 +109,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                          intent.putExtra("user_photo", user.getPhotoUrl());
                          startActivity(intent);
                      } else {
-                         Toast.makeText(getApplicationContext(), "Falló autenticación", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(getApplicationContext(), R.string.auth_successful, Toast.LENGTH_SHORT).show();
                          updateUI(null);
-                     }
-                     if (!task.isSuccessful()) {
-                         Toast.makeText(getApplicationContext(), R.string.auth_failed, Toast.LENGTH_SHORT).show();
                      }
                      hideProgressDialog();
 
@@ -140,9 +136,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 {
                     findViewById(R.id.verify_email_button).setEnabled(true);
                     if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(), "Correo enviado a: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.verification_email_sent, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Falló el envio de correo: ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.failed_to_send_verification_email, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -153,14 +149,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         boolean valid = true;
         String  email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mEmailField.setError("Requerido!");
+            mEmailField.setError(getString(R.string.required));
             valid = false;
         } else {
             mEmailField.setError(null);
         }
         String password = mPasswordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mPasswordField.setError("Requirido!");
+            mPasswordField.setError(getString(R.string.required));
             valid = false;
         } else {
             mPasswordField.setError(null);
@@ -257,7 +253,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             } else {
 
-                                Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                Toast.makeText(getApplicationContext(), R.string.auth_failed,
                                         Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }

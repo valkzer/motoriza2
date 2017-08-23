@@ -168,8 +168,9 @@
                 android:ems="10"
                 android:hint="@string/exp_month"
                 android:inputType="number"
+                android:maxLength="2"
                 app:layout_constraintLeft_toRightOf="@+id/cboCreditCardType"
-                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber"/>
 
             <EditText
                 android:id="@+id/txtCreditCardExpYear"
@@ -182,10 +183,11 @@
                 android:ems="10"
                 android:hint="@string/exp_year"
                 android:inputType="number"
+                android:maxLength="4"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintLeft_toRightOf="@+id/txtCreditCardExpMonth"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCreditCardNumber"/>
 
             <EditText
                 android:id="@+id/txtDeliveryAmount"

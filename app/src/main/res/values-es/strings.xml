@@ -120,4 +120,16 @@
     <string name="nav_Logout">Cerrar Sesión</string>
     <string name="credit_card_type">Tipo Tarjeta de crédito</string>
     <string name="ErrorValidateFields">Por Favor Revise el Valor</string>
+
+    <string name="auth_successful">Autenticado correctamente</string>
+    <string name="auth_started">Autenticando…</string>
+    <string name="connection_error">Error de conexion</string>
+    <string name="develiry_completed">Entrega completada!</string>
+    <string name="creating_account">Creando cuenta…</string>
+    <string name="account_created">Cuenta creada!</string>
+    <string name="failed_to_create_account">Error al crear la cuenta!</string>
+    <string name="required">Requerido!</string>
+    <string name="failed_to_send_verification_email">Fallo el envio del correo de verificacion</string>
+    <string name="verification_email_sent">Correo de verificacion enviado!</string>
+    <string name="provide_a_valid_email">Introduzca un correo valido</string>
 </resources>

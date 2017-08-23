@@ -49,7 +49,7 @@ public class CreateCustomerActivity extends BaseActivity {
         }
 
         if (!isValidEmailAddress(email)){
-            ((EditText) findViewById(R.id.txtCorreo)).setError("Write a correct email");
+            ((EditText) findViewById(R.id.txtCorreo)).setError(getString(R.string.provide_a_valid_email));
             ((EditText) findViewById(R.id.txtCorreo)).setHint("aaaa@eee.com");
             flag = false;
         }
